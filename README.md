@@ -1,10 +1,10 @@
 # DiscordMusicBot
-A complete sourcecode from Discord Music Bot written in JavaScript with NodeJS.
-#⚡ Commands
+<p>A complete sourcecode from Discord Music Bot written in JavaScript with NodeJS.</p>
+<b>⚡ Commands</b>
 
 
-#📑 Instalation
-Install NodeJS 16+
-Open the configuration file (config.js) and edit all fields
-Execute command <b>npm install</b> in bot directory
-Start bot with command <b>npm start</b> in bot directory
+<b>📑 Instalation</b>
+<p>Install NodeJS 16+</p>
+<p>Open the configuration file (config.js) and edit all fields</p>
+<p>Execute command <b>npm install</b> in bot directory</p>
+<p>Start bot with command <b>npm start</b> in bot directory</p>
