@@ -1,8 +1,8 @@
 # DiscordMusicBot
 <p>A complete sourcecode from Discord Music Bot written in JavaScript with NodeJS.</p>
 <br>
-<ul><b>⚡ Commands</b>
-<li>help - show list of commands</li>
+<b>⚡ Commands</b>
+<ul><li>help - show list of commands</li>
 <li>ping - get ping of bot</li>
 <li>back - back the music</li>
 <li>clear - clear playlist</li>
