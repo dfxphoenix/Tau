@@ -1,7 +1,7 @@
 # DiscordMusicBot
 <p>A complete sourcecode from Discord Music Bot written in JavaScript with NodeJS.</p>
 <br>
-<b>⚡ Commands</b>
+<ul><b>⚡ Commands</b>
 <li>help - show list of commands</li>
 <li>ping - get ping of bot</li>
 <li>back - back the music</li>
@@ -20,7 +20,7 @@
 <li>shuffle - queue shuffled one music</li>
 <li>skip - skipping current music</<</li>
 <li>stop - stop current music</li>
-<li>volume - set volume of music</li>
+<li>volume - set volume of music</li></ul>
 <br>
 <b>📑 Instalation</b>
 <p>Install NodeJS 16+</p>
