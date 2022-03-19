@@ -1,0 +1,50 @@
+const { MessageEmbed } = require('discord.js');
+const language = require(`../../languages/${client.config.app.language}.json`);
+
+module.exports = {
+    name: 'queue',
+    aliases: ['q'],
+    utilisation: '{prefix}queue',
+    voiceChannel: true,
+
+    execute(client, message) {
+        const queue = player.getQueue(message.guild.id);
+        const embed = new MessageEmbed();
+
+        if (!queue) {
+            embed.setAuthor({ name: `${client.user.username} | Queue`, iconURL: `${client.user.displayAvatarURL()}` });
+            embed.setColor(client.config.app.color);
+            embed.setDescription(language.NO_MUSIC + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
+            embed.setTimestamp();
+            embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
+            return message.channel.send({ embeds: [embed] });
+        } 
+
+        if (!queue.tracks[0]) {
+            embed.setAuthor({ name: `${client.user.username} | Queue`, iconURL: `${client.user.displayAvatarURL()}` });
+            embed.setColor(client.config.app.color);
+            embed.setDescription(language.NO_MUSIC_QUEUE + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
+            embed.setTimestamp();
+            embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
+            return message.channel.send({ embeds: [embed] });
+        } 
+
+        const methods = ['', '🔁', '🔂'];
+
+        embed.setAuthor({ name: `${client.user.username} | Queue`, iconURL: `${client.user.displayAvatarURL()}` });
+        embed.setColor(client.config.app.color);
+        embed.setThumbnail(message.guild.iconURL({ size: 2048, dynamic: true }));
+
+        const tracks = queue.tracks.map((track, i) => `**${i + 1}** - ${track.title} | ${track.author} (requested by : ${track.requestedBy.username})`);
+
+        const songs = queue.tracks.length;
+        const nextSongs = songs > 5 ? language.AND + ` **${songs - 5}** ` + language.OTHER_SONGS + `...` : language.IN_PLAYLIST + ` **${songs}** ` + language.SONGS + `...`;
+
+        embed.setDescription(language.CURRENT + ` ${queue.current.title}\n\n${tracks.slice(0, 5).join('\n')}\n\n${nextSongs}`);
+
+        embed.setTimestamp();
+        embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
+
+        message.channel.send({ embeds: [embed] });
+    },
+};
