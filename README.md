@@ -23,7 +23,7 @@
 <li>volume - set volume of music</li></ul>
 <br>
 <b>📑 Instalation</b>
-<ul><li>Install NodeJS 16+</li>
-<li>Open the configuration file (config.js) and edit all fields</li>
+<ul><li>Install <b>NodeJS 16+</b></li>
+  <li>Open the configuration file (<b>config.js</b>) and edit all fields</li>
 <li>Execute command <b>npm install</b> in bot directory</li>
 <li>Start bot with command <b>npm start</b> in bot directory</li></ul>
