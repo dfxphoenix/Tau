@@ -2,13 +2,13 @@ module.exports = {
     app: {
         px: '!',
         token: 'Token',
-		id: 'ID',
-		playing: 'music',
-		port: 80,
-		ip: '127.0.0.1',
-		owner: 'Owner name',
-		color: '#faa61a',
-		language: 'en_US'
+        id: 'ID',
+        playing: 'music',
+        port: 80,
+        ip: '127.0.0.1',
+        owner: 'Owner name',
+        color: '#faa61a',
+        language: 'en_US'
     },
 
     opt: {
