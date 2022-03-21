@@ -3,7 +3,7 @@ module.exports = {
         px: '!',
         token: 'Token',
 		id: 'ID',
-        playing: 'music',
+		playing: 'music',
 		port: 80,
 		ip: '127.0.0.1',
 		owner: 'Owner name',
