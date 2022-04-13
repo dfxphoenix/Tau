@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const play = require('play-dl');
 const { QueryType } = require('discord-player');
 const language = require(`../../languages/${client.config.app.language}.json`);
 

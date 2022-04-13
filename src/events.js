@@ -13,30 +13,30 @@ player.on('connectionError', (queue, error) => {
 player.on('trackStart', (queue, track) => {
     if (!client.config.opt.loopMessage && queue.repeatMode !== 0) return;
     embed.setColor(client.config.app.color);
-    embed.setDescription(`Started playing ${track.title} in **${queue.connection.channel.name}** 🎧`);
+    embed.setDescription(language.STARTING_PLAYING + ` ${track.title} ` + language.IN + ` **${queue.connection.channel.name}** 🎧`);
 	queue.metadata.send({ embeds: [embed] });
 });
 
 player.on('trackAdd', (queue, track) => {
     embed.setColor(client.config.app.color);
-    embed.setDescription(`Track ${track.title} added in the queue ✅`);
+    embed.setDescription(language.TRACK + ` ${track.title} ` + language.ADDED_IN_QUEUE + ` ✅`);
 	queue.metadata.send({ embeds: [embed] });
 });
 
 player.on('botDisconnect', (queue) => {
     embed.setColor(client.config.app.color);
-    embed.setDescription('I was manually disconnected from the voice channel, clearing queue... ❌');
+    embed.setDescription(language.MANUALLY_DISCONNECTED + '... ❌');
 	queue.metadata.send({ embeds: [embed] });
 });
 
 player.on('channelEmpty', (queue) => {
     embed.setColor(client.config.app.color);
-    embed.setDescription('Nobody is in the voice channel, leaving the voice channel... ❌');
+    embed.setDescription(language.NOBODY_IS_ON_CHANNEL + '... ❌');
 	queue.metadata.send({ embeds: [embed] });
 });
 
 player.on('queueEnd', (queue) => {
     embed.setColor(client.config.app.color);
-    embed.setDescription('I finished reading the whole queue ✅');
+    embed.setDescription(language.FINISHED_READING + ' ✅');
 	queue.metadata.send({ embeds: [embed] });
 });

@@ -22,7 +22,7 @@ module.exports = (client, message) => {
         if (!message.member._roles.includes(roleDJ.id)) {
             embed.setAuthor({ name: `${client.user.username} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
             embed.setColor(client.config.app.color);
-            embed.setDescription(`This command is reserved for members with the ${DJ.roleName} role on the server ${message.author}... try again ? ❌`);
+            embed.setDescription(language.THIS_COMMAND + ` ${DJ.roleName} ` + language.ROLE_ON_SERVER + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
 	        return message.channel.send({ embeds: [embed] });
         }
     }
@@ -31,14 +31,14 @@ module.exports = (client, message) => {
         if (!message.member.voice.channel) {
             embed.setAuthor({ name: `${client.user.username} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
             embed.setColor(client.config.app.color);
-            embed.setDescription(`This command is reserved for members with the ${DJ.roleName} role on the server ${message.author}... try again ? ❌`);
+            embed.setDescription(language.THIS_COMMAND + ` ${DJ.roleName} ` + language.ROLE_ON_SERVER + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
 	        return message.channel.send({ embeds: [embed] });
 		}
 
         if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
             embed.setAuthor({ name: `${client.user.username} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
             embed.setColor(client.config.app.color);
-            embed.setDescription(`You are not in the same voice channel ${message.author}... try again ? ❌`);
+            embed.setDescription(language.YOU_ARE_NOT + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
 	        return message.channel.send({ embeds: [embed] });
 		}
     }
