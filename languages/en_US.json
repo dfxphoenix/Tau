@@ -15,7 +15,7 @@
     "FILTER_DOESNT_EXIST": "This filter doesn't exist",
     "LIST_AVAILABLE_FILTERS": "List of available filters",
     "THE_FILTER": "The filter",
-    "is_now": "is now",
+    "IS_NOW": "is now",
     "REMINDER_THE_LONGER": "Reminder the longer the music is, the longer this will take.",
     "QUEUE_CLEARED": "The queue has just been cleared",
     "DISABLE_CURRENT_MUSIC": "You must first disable the current music in the loop mode",

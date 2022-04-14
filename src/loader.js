@@ -1,5 +1,9 @@
 const { readdirSync } = require('fs');
 const { Collection } = require('discord.js');
+const { REST } = require('@discordjs/rest');
+const { Routes } = require('discord-api-types/v9');
+
+const commands = [];
 
 client.commands = new Collection();
 
@@ -16,13 +20,52 @@ for (const file of events) {
 
 console.log(`Loading commands...`);
 
-readdirSync('./commands/').forEach(dirs => {
-    const commands = readdirSync(`./commands/${dirs}`).filter(files => files.endsWith('.js'));
+if (config.app.slashCommands && config.app.slashCommands !== "") {
+	readdirSync('./commands/slash/').forEach(dirs => {
+		const commandFiles = readdirSync(`./commands/slash/${dirs}`).filter(files => files.endsWith('.js'));
 
-    for (const file of commands) {
-        const command = require(`../commands/${dirs}/${file}`);
-        console.log(`-> Loaded command ${command.name.toLowerCase()}`);
-        client.commands.set(command.name.toLowerCase(), command);
-        delete require.cache[require.resolve(`../commands/${dirs}/${file}`)];
-    };
-});
+		for (fileSlash of commandFiles) {
+			const command = require(`../commands/slash/${dirs}/${fileSlash}`);
+			commands.push(command);
+			console.log(`-> Loaded command ${command.name.toLowerCase()}`);
+			client.commands.set(command.name.toLowerCase(), command);
+			delete require.cache[require.resolve(`../commands/slash/${dirs}/${fileSlash}`)];
+		};
+	});
+} else {
+	readdirSync('./commands/normal/').forEach(dirs => {
+		const commandFiles = readdirSync(`./commands/normal/${dirs}`).filter(files => files.endsWith('.js'));
+
+		for (fileNormal of commandFiles) {
+			const command = require(`../commands/normal/${dirs}/${fileNormal}`);
+			console.log(`-> Loaded command ${command.name.toLowerCase()}`);
+			client.commands.set(command.name.toLowerCase(), command);
+			delete require.cache[require.resolve(`../commands/normal/${dirs}/${fileNormal}`)];
+		};
+	});
+}
+
+if (config.app.slashCommands && config.app.slashCommands !== "") {
+	client.once('ready', () => {
+		const slashCommands = commands.map(fileSlash => ({
+			name: fileSlash.name,
+			description: fileSlash.description,
+			options: fileSlash.options,
+			defaultPermission: true
+		}));
+		const CLIENT_ID = client.user.id;
+		const rest = new REST({version: '9'}).setToken(config.app.token);
+		(async () => {
+			try {
+				await rest.put(
+					Routes.applicationCommands(CLIENT_ID), {
+						body: slashCommands
+					},
+				);
+					console.log('Successfully registered application commands globally');
+			} catch (error) {
+				if (error) console.error(error);
+			}
+		})();
+	});
+}

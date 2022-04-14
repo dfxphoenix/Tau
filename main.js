@@ -6,6 +6,10 @@ const extractor = require("./src/extractor.js");
 const express = require('express');
 const app = express();
 
+config = require('./config');
+
+language = require(`./languages/${config.app.language}.json`);
+
 global.client = new Client({
     intents: [
         Intents.FLAGS.GUILDS,
@@ -16,16 +20,12 @@ global.client = new Client({
     disableMentions: 'everyone',
 });
 
-client.config = require('./config');
-
-global.player = new Player(client, client.config.opt.discordPlayer);
+global.player = new Player(client, config.opt.discordPlayer);
 
 require('./src/loader');
 require('./src/events');
 
-client.login(client.config.app.token);
-
-const language = require(`./languages/${client.config.app.language}.json`);
+client.login(config.app.token);
  
 // sendFile will go here
 app.use(express.static('website/assets'));
@@ -34,13 +34,17 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname);
 
 app.get('/', function(req, res) {
-  const id = client.config.app.id;
+  const id = config.app.id;
   const name = client.user.username;
   const avatar = client.user.displayAvatarURL();
-  const owner = client.config.app.owner;
-  const prefix = client.config.app.px;
+  const owner = config.app.owner;
+  if (config.app.slashCommands && config.app.slashCommands !== "") {
+    var prefix = '/';
+  } else {
+    var prefix = config.app.px;
+  }
   const year = new Date().getFullYear();
-  const color = client.config.app.color;
+  const color = config.app.color;
   const guilds = client.guilds.cache.size;
   const users = client.users.cache.size;
   const channels = client.channels.cache.size;
@@ -68,13 +72,13 @@ player.use("player", extractor);
 app.get('*', function(req, res) {
   const name = client.user.username;
   const avatar = client.user.displayAvatarURL();
-  const color = client.config.app.color;
+  const color = config.app.color;
   res.status(404).render(__dirname + '/website/404.ejs', {name:name,avatar:avatar,color:color,language:language});
 });
 
 // Start the server
-const PORT = process.env.PORT || client.config.app.port;
-const IP = process.env.IP || client.config.app.ip;
+const PORT = process.env.PORT || config.app.port;
+const IP = process.env.IP || config.app.ip;
 app.listen(PORT, IP, () => {
   console.log(`Website listening on port ${PORT}`);
 });

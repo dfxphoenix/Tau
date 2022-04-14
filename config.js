@@ -1,8 +1,9 @@
 module.exports = {
     app: {
-        px: '!',
-        token: 'Token',
-        id: 'ID',
+        px: 'b!',
+        slashCommands: true,
+        token: 'OTYzOTU4NzA2ODQ2OTkwNDQ2.YldqgQ.cfSVdSTY5nCmgaYynob-M9ynizA',
+        id: '963958706846990446',
         playing: 'music',
         port: 80,
         ip: '127.0.0.1',
