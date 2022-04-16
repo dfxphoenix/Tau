@@ -36,13 +36,14 @@ app.get('/', function(req, res) {
 	const id = config.app.id;
 	const name = client.user.username;
 	const avatar = client.user.displayAvatarURL();
+	const slogan = config.app.slogan;
 	const owner = config.app.owner;
 	const year = new Date().getFullYear();
 	const color = config.app.color;
 	const guilds = client.guilds.cache.size;
 	const users = client.users.cache.size;
 	const channels = client.channels.cache.size;
-	res.render(__dirname + '/website/index.ejs', {id:id,name:name,avatar:avatar,owner:owner,prefix:prefix,year:year,color:color,language:language,guilds:guilds,users:users,channels:channels});
+	res.render(__dirname + '/website/index.ejs', {id:id,name:name,avatar:avatar,slogan:slogan,owner:owner,prefix:prefix,year:year,color:color,language:language,guilds:guilds,users:users,channels:channels});
 });
 
 app.get('/api', function(req, res) {
