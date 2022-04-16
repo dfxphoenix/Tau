@@ -27,9 +27,9 @@
 <li>Open the configuration file (<b>config.js</b>) and edit all fields</li>
 <li>Execute command <b>npm install</b> in bot directory</li>
 <li>Start bot with command <b>npm start</b> in bot directory</li></ul>
-
+<br>
 <b>⭐ Extra</b>
 <p>If you want to add more languages, just copy <b>en_US.json</b> from <b>languages</b>, rename it into <b>xx_XX.json</b> (for example <b>ro_RO.json</b>), copy back in <b>languages</b> and translate it.</p>
-
-<b>Demo</b>
+<br>
+<b>👁️ Demo</b>
 <p>Link: https://tau-music-bot.herokuapp.com</p>
