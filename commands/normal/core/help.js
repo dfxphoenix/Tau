@@ -5,6 +5,7 @@ module.exports = {
     aliases: ['h'],
     showHelp: false,
     utilisation: '{prefix}help',
+    permission: "SEND_MESSAGES",
 
     execute(client, message, args) {
         const embed = new MessageEmbed();

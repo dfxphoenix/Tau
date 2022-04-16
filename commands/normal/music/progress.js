@@ -4,6 +4,7 @@ module.exports = {
     name: 'progress',
     aliases: ['pbar'],
     utilisation: '{prefix}progress',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     async execute(client, message) {

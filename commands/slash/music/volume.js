@@ -6,6 +6,7 @@ module.exports = {
 	description: 'set volume of music',
     aliases: ['vol'],
     utilisation: `{prefix}volume [1-${maxVol}]`,
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 	options: [
         { description: 'Volumr from 1 to 100', name: 'volume', required: true, type: 3 }

@@ -5,6 +5,7 @@ module.exports = {
 	description: 'stop current music',
     aliases: ['dc'],
     utilisation: '{prefix}stop',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     execute(interaction) {

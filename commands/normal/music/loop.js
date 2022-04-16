@@ -5,6 +5,7 @@ module.exports = {
     name: 'loop',
     aliases: ['lp', 'repeat'],
     utilisation: '{prefix}loop <queue>',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     execute(client, message, args) {

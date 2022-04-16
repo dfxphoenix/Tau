@@ -5,6 +5,7 @@ module.exports = {
 	description: 'set filters to music',
     aliases: [],
     utilisation: '{prefix}filter [filter name]',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 	options: [
         { description: 'Name of filter', name: 'filter', required: false, type: 3 }

@@ -4,6 +4,7 @@ module.exports = {
     name: 'help',
 	description: 'show list of commands',
     aliases: ['h'],
+    permission: "SEND_MESSAGES",
     showHelp: false,
 
     execute(interaction, client, message, args) {

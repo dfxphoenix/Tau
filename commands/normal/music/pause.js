@@ -4,6 +4,7 @@ module.exports = {
     name: 'pause',
     aliases: [],
     utilisation: '{prefix}pause',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     execute(client, message) {

@@ -5,6 +5,7 @@ module.exports = {
 	description: 'queue shuffled one music',
     aliases: ['sh'],
     utilisation: '{prefix}shuffle',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     async execute(interaction) {

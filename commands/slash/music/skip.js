@@ -5,6 +5,7 @@ module.exports = {
 	description: 'skipping current music',
     aliases: ['sk'],
     utilisation: '{prefix}skip',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     execute(interaction) {

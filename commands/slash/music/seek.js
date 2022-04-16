@@ -6,6 +6,7 @@ module.exports = {
 	description: 'seeking a music',
     aliases: [],
     utilisation: '{prefix}seek [time]',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 	options: [
         { description: 'Time', name: 'time', required: true, type: 3 },

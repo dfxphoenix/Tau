@@ -5,6 +5,7 @@ module.exports = {
 	description: 'send in DM the music you listened to',
     aliases: ['sv'],
     utilisation: '{prefix}save',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     async execute(interaction) {

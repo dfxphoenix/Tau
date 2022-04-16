@@ -5,6 +5,7 @@ module.exports = {
 	description: 'clear playlist',
     aliases: ['cq'],
     utilisation: '{prefix}clear',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     async execute(interaction) {

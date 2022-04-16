@@ -5,6 +5,7 @@ module.exports = {
 	description: 'pause current music',
     aliases: [],
     utilisation: '{prefix}pause',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     execute(interaction) {

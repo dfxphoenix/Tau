@@ -6,6 +6,7 @@ module.exports = {
 	description: 'search a music',
     aliases: ['sh'],
     utilisation: '{prefix}search [song name]',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 	options: [
         { description: 'Song name', name: 'song', required: true, type: 3 }

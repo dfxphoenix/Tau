@@ -14,7 +14,6 @@ global.client = new Client({
         Intents.FLAGS.GUILD_MESSAGES,
         Intents.FLAGS.GUILD_VOICE_STATES
     ],
-    disableMentions: 'everyone',
 });
 
 global.player = new Player(client, config.opt.discordPlayer);

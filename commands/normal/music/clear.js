@@ -4,6 +4,7 @@ module.exports = {
     name: 'clear',
     aliases: ['cq'],
     utilisation: '{prefix}clear',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     async execute(client, message) {

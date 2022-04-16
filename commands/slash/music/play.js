@@ -6,6 +6,7 @@ module.exports = {
 	description: 'play a music',
     aliases: ['p'],
     utilisation: '{prefix}play [song name/URL]',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 	options: [
         { description: 'URL or song name', name: 'track', required: false, type: 3 }

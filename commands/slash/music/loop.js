@@ -6,6 +6,7 @@ module.exports = {
 	description: 'repet current playlist',
     aliases: ['lp', 'repeat'],
     utilisation: '{prefix}loop <queue>',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 	options: [
         { description: 'Queue', name: 'queue', required: true, type: 3 }

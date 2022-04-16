@@ -4,6 +4,7 @@ module.exports = {
     name: 'resume',
     aliases: ['rs'],
     utilisation: '{prefix}resume',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     execute(client, message) {

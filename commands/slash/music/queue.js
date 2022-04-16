@@ -5,6 +5,7 @@ module.exports = {
 	description: 'show the playlist',
     aliases: ['q'],
     utilisation: '{prefix}queue',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     execute(interaction) {

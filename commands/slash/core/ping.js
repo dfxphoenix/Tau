@@ -6,6 +6,7 @@ module.exports = {
 	description: 'get ping of bot',
     aliases: [],
     utilisation: '{prefix}ping',
+    permission: "SEND_MESSAGES",
 
     execute(interaction) {
     	const embed = new MessageEmbed();

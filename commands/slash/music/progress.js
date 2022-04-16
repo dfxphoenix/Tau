@@ -5,6 +5,7 @@ module.exports = {
 	description: 'show current playing time of current music',
     aliases: ['pbar'],
     utilisation: '{prefix}progress',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     async execute(interaction) {

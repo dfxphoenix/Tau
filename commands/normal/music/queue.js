@@ -4,6 +4,7 @@ module.exports = {
     name: 'queue',
     aliases: ['q'],
     utilisation: '{prefix}queue',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     execute(client, message) {

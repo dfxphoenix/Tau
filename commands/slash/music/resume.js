@@ -5,6 +5,7 @@ module.exports = {
 	description: 'resume current music',
     aliases: ['rs'],
     utilisation: '{prefix}resume',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     execute(interaction) {

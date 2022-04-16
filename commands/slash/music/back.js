@@ -5,6 +5,7 @@ module.exports = {
 	description: 'back the music',
     aliases: ['previous'],
     utilisation: '{prefix}back',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     async execute(interaction) {

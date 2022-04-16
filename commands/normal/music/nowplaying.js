@@ -4,6 +4,7 @@ module.exports = {
     name: 'nowplaying',
     aliases: ['np'],
     utilisation: '{prefix}nowplaying',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     execute(client, message) {

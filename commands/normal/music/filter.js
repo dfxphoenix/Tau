@@ -4,6 +4,7 @@ module.exports = {
     name: 'filter',
     aliases: [],
     utilisation: '{prefix}filter [filter name]',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     async execute(client, message, args) {

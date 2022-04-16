@@ -5,6 +5,7 @@ module.exports = {
 	description: 'show current music',
     aliases: ['np'],
     utilisation: '{prefix}nowplaying',
+    permission: "SEND_MESSAGES",
     voiceChannel: true,
 
     execute(interaction) {
