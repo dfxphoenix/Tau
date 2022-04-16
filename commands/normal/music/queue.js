@@ -18,7 +18,7 @@ module.exports = {
 			embed.setTimestamp();
 			embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
 			return message.channel.send({ embeds: [embed] });
-		} 
+		}
 
 		if (!queue.tracks[0]) {
 			embed.setAuthor({ name: `${client.user.username} | Queue`, iconURL: `${client.user.displayAvatarURL()}` });
@@ -27,9 +27,7 @@ module.exports = {
 			embed.setTimestamp();
 			embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
 			return message.channel.send({ embeds: [embed] });
-		} 
-
-		const methods = ['', '🔁', '🔂'];
+		}
 
 		embed.setAuthor({ name: `${client.user.username} | Queue`, iconURL: `${client.user.displayAvatarURL()}` });
 		embed.setColor(config.app.color);

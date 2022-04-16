@@ -6,7 +6,7 @@ module.exports = {
 	permission: "SEND_MESSAGES",
 	showHelp: false,
 
-	execute(interaction, client, message, args) {
+	execute(interaction) {
 		const embed = new MessageEmbed();
 
 		const commands = interaction.client.commands.filter(x => x.showHelp !== false);

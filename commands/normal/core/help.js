@@ -7,7 +7,7 @@ module.exports = {
 	utilisation: '{prefix}help',
 	permission: "SEND_MESSAGES",
 
-	execute(client, message, args) {
+	execute(client, message) {
 		const embed = new MessageEmbed();
 
 		const commands = client.commands.filter(x => x.showHelp !== false);
@@ -15,7 +15,7 @@ module.exports = {
 		embed.setAuthor({ name: `${client.user.username} | Ping`, iconURL: `${client.user.displayAvatarURL()}` });
 		embed.setColor(config.app.color);
 		embed.setDescription(language.LIST);
-		embed.addField(language.COMMANDS + ` - ${commands.size}`, commands.map(x => `\`${x.name}${x.aliases[0] ? ` (${x.aliases.map(y => y).join(', ')})\`` : '\`'}`).join(' | '));
+		embed.addField(language.COMMANDS + ` - ${commands.size}`, commands.map(x => `\`${x.name}${x.aliases[0] ? ` (${x.aliases.map(y => y).join(', ')})\`` : '`'}`).join(' | '));
 		embed.setTimestamp();
 		embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
 

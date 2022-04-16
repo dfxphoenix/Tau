@@ -9,9 +9,9 @@ module.exports = (client, int) => {
 
 			int.member.send(language.YOU_SAVED_TRACK + ` ${queue.current.title} | ${queue.current.author} ` + langauge.FROM_THE_SERVER + ` ${int.member.guild.name} ✅`).then(() => {
 				return int.reply({ content: language.SENT_TITLE + ` ✅`, ephemeral: true, components: [] });
-			}).catch(error => {
+			}).catch(
 				return int.reply({ content: language.UNABLE_TO_SEND + `... ` + language.TRY_AGAIN + ` ❌`, ephemeral: true, components: [] });
-			});
+			);
 		}
 	}
 };
