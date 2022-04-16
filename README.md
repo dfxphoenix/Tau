@@ -6,7 +6,7 @@
 [![](https://img.shields.io/badge/paypal-donate-blue.svg)](https://paypal.me/dfxphoenix)
 [![](https://www.codefactor.io/repository/github/dfxphoenix/Tau/badge)](https://www.codefactor.io/repository/github/dfxphoenix/Tau)
 
-<p>A complete sourcecode from Discord Music Bot written in JavaScript with NodeJS.</p>
+<p>A complete sourcecode from Tau written in JavaScript with NodeJS.</p>
 <br>
 <b>⚡ Commands</b>
 <ul><li>help - show list of commands</li>
