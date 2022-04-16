@@ -54,7 +54,6 @@
     "OR": "or",
     "SEARCH_CANCELED": "Search cancelled",
     "INVALID_RESPONSE": "Invalid response, try a value between",
-    "JOIN_VOICE_CHANNEL": "I can't join the voice channel",
     "LOADING_SEARCH": "Loading your search...",
     "SEARCH_TIME_OUT": "Search timed out",
     "TIME_INVALID": "The indicated time is invalid",

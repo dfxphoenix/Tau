@@ -1,9 +1,9 @@
 module.exports = {
     app: {
-        px: 'b!',
+        px: '!',
         slashCommands: true,
-        token: 'OTYzOTU4NzA2ODQ2OTkwNDQ2.YldqgQ.cfSVdSTY5nCmgaYynob-M9ynizA',
-        id: '963958706846990446',
+        token: 'Token',
+        id: 'ID',
         playing: 'music',
         port: 80,
         ip: '127.0.0.1',
@@ -15,7 +15,7 @@ module.exports = {
     opt: {
         DJ: {
             enabled: false,
-            roleName: 'DJ',
+            roleName: ['DJ'],
             commands: ['back', 'clear', 'filter', 'loop', 'pause', 'resume', 'seek', 'shuffle', 'skip', 'stop', 'volume']
         },
         maxVol: 100,

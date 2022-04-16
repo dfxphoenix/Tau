@@ -84,7 +84,7 @@ module.exports = {
                 await player.deleteQueue(message.guild.id);
                 embed.setAuthor({ name: `${client.user.username} | Search`, iconURL: `${client.user.displayAvatarURL()}` });
                 embed.setColor(config.app.color);
-                embed.setDescription(language.JOIN_VOICE_CHANNEL + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
+                embed.setDescription(language.JOIN_VOICE + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
                 embed.setTimestamp();
                 embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
                 return message.channel.send({ embeds: [embed] });
