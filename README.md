@@ -1,8 +1,7 @@
 <img width="120" height="120" align="left" style="float: left; margin: 0 10px 0 0;" alt="Tau" src="https://i.imgur.com/4bSztxU.png">
 
 # Tau
-[![](https://img.shields.io/discord/565048515357835264.svg?logo=discord&colorB=7289DA&label=Atlanta%20Support)](https://discord.gg/Za9zxTH)
-[![](https://img.shields.io/discord/568120814776614924.svg?logo=discord&colorB=00BFFF&label=Atlanta%20Emojis)](https://discord.gg/NPkySYKMkN)
+[![](https://img.shields.io/website?down_color=red&down_message=offline&up_color=green&up_message=online&url=https%3A%2F%2Ftau-music-bot.herokuapp.com)](https://tau-music-bot.herokuapp.com)
 [![](https://img.shields.io/badge/discord.js-v13.6.0-blue.svg?logo=npm)](https://github.com/discordjs)
 [![](https://img.shields.io/badge/paypal-donate-blue.svg)](https://paypal.me/dfxphoenix)
 [![](https://www.codefactor.io/repository/github/dfxphoenix/Tau/badge)](https://www.codefactor.io/repository/github/dfxphoenix/Tau)
