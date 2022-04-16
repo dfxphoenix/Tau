@@ -1,5 +1,12 @@
-<img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="Tau" src="https://i.goopics.net/lEENx.png"> 
+<img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="Tau" src="https://i.goopics.net/lEENx.png">
+
 # Tau
+[![](https://img.shields.io/discord/565048515357835264.svg?logo=discord&colorB=7289DA&label=Atlanta%20Support)](https://discord.gg/Za9zxTH)
+[![](https://img.shields.io/discord/568120814776614924.svg?logo=discord&colorB=00BFFF&label=Atlanta%20Emojis)](https://discord.gg/NPkySYKMkN)
+[![](https://img.shields.io/badge/discord.js-v13.0.0--dev-blue.svg?logo=npm)](https://github.com/discordjs)
+[![](https://img.shields.io/badge/patreon-donate-orange.svg)](https://www.patreon.com/androz2091)
+[![](https://www.codefactor.io/repository/github/Androz2091/AtlantaBot/badge)](https://www.codefactor.io/repository/github/Androz2091/AtlantaBot)
+
 <p>A complete sourcecode from Discord Music Bot written in JavaScript with NodeJS.</p>
 <br>
 <b>⚡ Commands</b>
