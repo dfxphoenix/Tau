@@ -32,4 +32,4 @@
 <p>If you want to add more languages, just copy <b>en_US.json</b> from <b>languages</b>, rename it into <b>xx_XX.json</b> (for example <b>ro_RO.json</b>), copy back in <b>languages</b> and translate it.</p>
 
 <b>Demo</b>
-Link: https://tau-music-bot.herokuapp.com
+<p>Link: https://tau-music-bot.herokuapp.com</p>
