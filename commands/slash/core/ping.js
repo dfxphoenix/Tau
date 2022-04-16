@@ -4,8 +4,6 @@ const ms = require('ms');
 module.exports = {
     name: 'ping',
 	description: 'get ping of bot',
-    aliases: [],
-    utilisation: '{prefix}ping',
     permission: "SEND_MESSAGES",
 
     execute(interaction) {

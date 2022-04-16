@@ -3,8 +3,6 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     name: 'pause',
 	description: 'pause current music',
-    aliases: [],
-    utilisation: '{prefix}pause',
     permission: "SEND_MESSAGES",
     voiceChannel: true,
 

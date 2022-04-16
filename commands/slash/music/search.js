@@ -4,8 +4,6 @@ const { QueryType } = require('discord-player');
 module.exports = {
     name: 'search',
 	description: 'search a music',
-    aliases: ['sh'],
-    utilisation: '{prefix}search [song name]',
     permission: "SEND_MESSAGES",
     voiceChannel: true,
 	options: [

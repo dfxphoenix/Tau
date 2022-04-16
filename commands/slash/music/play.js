@@ -4,8 +4,6 @@ const { QueryType } = require('discord-player');
 module.exports = {
     name: 'play',
 	description: 'play a music',
-    aliases: ['p'],
-    utilisation: '{prefix}play [song name/URL]',
     permission: "SEND_MESSAGES",
     voiceChannel: true,
 	options: [

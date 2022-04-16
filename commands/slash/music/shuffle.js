@@ -3,8 +3,6 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     name: 'shuffle',
 	description: 'queue shuffled one music',
-    aliases: ['sh'],
-    utilisation: '{prefix}shuffle',
     permission: "SEND_MESSAGES",
     voiceChannel: true,
 

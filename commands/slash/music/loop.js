@@ -4,8 +4,6 @@ const { QueueRepeatMode } = require('discord-player');
 module.exports = {
     name: 'loop',
 	description: 'repet current playlist',
-    aliases: ['lp', 'repeat'],
-    utilisation: '{prefix}loop <queue>',
     permission: "SEND_MESSAGES",
     voiceChannel: true,
 	options: [

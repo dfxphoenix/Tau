@@ -3,8 +3,6 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     name: 'skip',
 	description: 'skipping current music',
-    aliases: ['sk'],
-    utilisation: '{prefix}skip',
     permission: "SEND_MESSAGES",
     voiceChannel: true,
 

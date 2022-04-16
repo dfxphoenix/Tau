@@ -3,8 +3,6 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     name: 'clear',
 	description: 'clear playlist',
-    aliases: ['cq'],
-    utilisation: '{prefix}clear',
     permission: "SEND_MESSAGES",
     voiceChannel: true,
 

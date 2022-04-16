@@ -3,8 +3,6 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     name: 'save',
 	description: 'send in DM the music you listened to',
-    aliases: ['sv'],
-    utilisation: '{prefix}save',
     permission: "SEND_MESSAGES",
     voiceChannel: true,
 

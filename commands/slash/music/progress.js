@@ -3,8 +3,6 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     name: 'progress',
 	description: 'show current playing time of current music',
-    aliases: ['pbar'],
-    utilisation: '{prefix}progress',
     permission: "SEND_MESSAGES",
     voiceChannel: true,
 

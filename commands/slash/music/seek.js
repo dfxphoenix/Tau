@@ -4,8 +4,6 @@ const ms = require('ms');
 module.exports = {
     name: 'seek',
 	description: 'seeking a music',
-    aliases: [],
-    utilisation: '{prefix}seek [time]',
     permission: "SEND_MESSAGES",
     voiceChannel: true,
 	options: [

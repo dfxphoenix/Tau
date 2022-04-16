@@ -3,8 +3,6 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     name: 'back',
 	description: 'back the music',
-    aliases: ['previous'],
-    utilisation: '{prefix}back',
     permission: "SEND_MESSAGES",
     voiceChannel: true,
 

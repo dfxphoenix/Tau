@@ -3,8 +3,6 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     name: 'resume',
 	description: 'resume current music',
-    aliases: ['rs'],
-    utilisation: '{prefix}resume',
     permission: "SEND_MESSAGES",
     voiceChannel: true,
 
