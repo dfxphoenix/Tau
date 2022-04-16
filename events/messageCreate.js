@@ -31,7 +31,7 @@ module.exports = (client, message) => {
         if (!message.member.voice.channel) {
             embed.setAuthor({ name: `${client.user.username} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
             embed.setColor(config.app.color);
-            embed.setDescription(language.THIS_COMMAND + ` ${DJ.roleName} ` + language.ROLE_ON_SERVER + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
+            embed.setDescription(language.NOT_IN_CHANNEL + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
 	        return message.channel.send({ embeds: [embed] });
 		}
 

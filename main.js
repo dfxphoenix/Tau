@@ -1,8 +1,5 @@
-const { Player } = require('discord-player');
 const { Client, Intents } = require('discord.js');
-const playdl = require("play-dl");
-const extractor = require("./src/extractor.js");
-
+const { Player } = require('discord-player');
 const express = require('express');
 const app = express();
 
@@ -67,8 +64,6 @@ app.get('/callback', function(req, res) {
   res.redirect(301, '/');
 });
 
-player.use("player", extractor);
-
 app.get('*', function(req, res) {
   const name = client.user.username;
   const avatar = client.user.displayAvatarURL();
@@ -81,10 +76,4 @@ const PORT = process.env.PORT || config.app.port;
 const IP = process.env.IP || config.app.ip;
 app.listen(PORT, IP, () => {
   console.log(`Website listening on port ${PORT}`);
-});
-
-playdl.getFreeClientID().then((clientID) => {
-	playdl.setToken({
-		soundcloud : { client_id : clientID }
-	});
 });
