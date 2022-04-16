@@ -24,7 +24,7 @@ module.exports = {
 
 		embed.setAuthor({ name: `${client.user.username} | Resume`, iconURL: `${client.user.displayAvatarURL()}` });
 		embed.setColor(config.app.color);
-		embed.setDescription(succes ? language.CURRENT_MUSIC + ` ${queue.current.title} ` + language.RESUMED + ` ✅` : language.SOMETHING_WRONG + ` ${message.author}... ` + language.TRY_AGAIN + ` ? ❌`);
+		embed.setDescription(success ? language.CURRENT_MUSIC + ` ${queue.current.title} ` + language.RESUMED + ` ✅` : language.SOMETHING_WRONG + ` ${message.author}... ` + language.TRY_AGAIN + ` ? ❌`);
 		embed.setTimestamp();
 		embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
 		return message.channel.send({ embeds: [embed] });
