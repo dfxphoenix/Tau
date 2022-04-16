@@ -20,7 +20,7 @@ module.exports = {
 			return message.channel.send({ embeds: [embed] });
 		} 
 
-		queue.setPaused(false);
+		var success = queue.setPaused(false);
 
 		embed.setAuthor({ name: `${client.user.username} | Resume`, iconURL: `${client.user.displayAvatarURL()}` });
 		embed.setColor(config.app.color);
