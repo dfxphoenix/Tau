@@ -8,9 +8,9 @@ config = require('./config');
 language = require(`./languages/${config.app.language}.json`);
 
 if (config.app.slashCommands && config.app.slashCommands !== "") {
-  prefix = '/';
+	prefix = '/';
 } else {
-  prefix = config.app.px;
+	prefix = config.app.px;
 }
 
 global.client = new Client({
@@ -33,45 +33,45 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname);
 
 app.get('/', function(req, res) {
-  const id = config.app.id;
-  const name = client.user.username;
-  const avatar = client.user.displayAvatarURL();
-  const owner = config.app.owner;
-  const year = new Date().getFullYear();
-  const color = config.app.color;
-  const guilds = client.guilds.cache.size;
-  const users = client.users.cache.size;
-  const channels = client.channels.cache.size;
-  res.render(__dirname + '/website/index.ejs', {id:id,name:name,avatar:avatar,owner:owner,prefix:prefix,year:year,color:color,language:language,guilds:guilds,users:users,channels:channels});
+	const id = config.app.id;
+	const name = client.user.username;
+	const avatar = client.user.displayAvatarURL();
+	const owner = config.app.owner;
+	const year = new Date().getFullYear();
+	const color = config.app.color;
+	const guilds = client.guilds.cache.size;
+	const users = client.users.cache.size;
+	const channels = client.channels.cache.size;
+	res.render(__dirname + '/website/index.ejs', {id:id,name:name,avatar:avatar,owner:owner,prefix:prefix,year:year,color:color,language:language,guilds:guilds,users:users,channels:channels});
 });
 
 app.get('/api', function(req, res) {
-  const guilds = client.guilds.cache.size;
-  const users = client.users.cache.size;
-  const channels = client.channels.cache.size;
+	const guilds = client.guilds.cache.size;
+	const users = client.users.cache.size;
+	const channels = client.channels.cache.size;
 
-  res.send({
-	'guilds': guilds,
-	'users': users,
-	'channels': channels
-  });
+	res.send({
+		'guilds': guilds,
+		'users': users,
+		'channels': channels
+	});
 });
 
 app.get('/callback', function(req, res) {
-  res.redirect(301, '/');
+	res.redirect(301, '/');
 });
 
 app.get('*', function(req, res) {
-  const name = client.user.username;
-  const avatar = client.user.displayAvatarURL();
-  const color = config.app.color;
-  res.status(404).render(__dirname + '/website/404.ejs', {name:name,avatar:avatar,color:color,language:language});
+	const name = client.user.username;
+	const avatar = client.user.displayAvatarURL();
+	const color = config.app.color;
+	res.status(404).render(__dirname + '/website/404.ejs', {name:name,avatar:avatar,color:color,language:language});
 });
 
 const PORT = process.env.PORT || config.app.port;
 const IP = process.env.IP || config.app.ip;
 app.listen(PORT, IP, () => {
-  console.log(`Website listening on port ${PORT}`);
+	console.log(`Website listening on port ${PORT}`);
 });
 
 client.login(config.app.token);
