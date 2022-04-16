@@ -19,7 +19,7 @@ module.exports = {
 			return interaction.reply({ embeds: [embed] });
 		} 
 
-		const success = queue.setPaused(false);
+		queue.setPaused(false);
 
 		embed.setAuthor({ name: `${interaction.client.user.username} | Resume`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
 		embed.setColor(config.app.color);
