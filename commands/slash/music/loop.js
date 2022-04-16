@@ -2,30 +2,30 @@ const { MessageEmbed } = require('discord.js');
 const { QueueRepeatMode } = require('discord-player');
 
 module.exports = {
-    name: 'loop',
+	name: 'loop',
 	description: 'repet current playlist',
-    permission: "SEND_MESSAGES",
-    voiceChannel: true,
+	permission: "SEND_MESSAGES",
+	voiceChannel: true,
 	options: [
-        { description: 'Queue', name: 'queue', required: true, type: 3 }
-    ],
+		{ description: 'Queue', name: 'queue', required: true, type: 3 }
+	],
 
-    execute(interaction) {
+	execute(interaction) {
 		const query = interaction.options.getString("queue");
-        const queue = player.getQueue(interaction.guild.id);
-        const embed = new MessageEmbed();
+		const queue = player.getQueue(interaction.guild.id);
+		const embed = new MessageEmbed();
 
-        if (!queue || !queue.playing) {
-            embed.setAuthor({ name: `${interaction.client.user.username} | Loop`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
-            embed.setColor(config.app.color);
-            embed.setDescription(language.NO_MUSIC + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
-            embed.setTimestamp();
-            embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
-            return interaction.reply({ embeds: [embed] });
-        } 
+		if (!queue || !queue.playing) {
+			embed.setAuthor({ name: `${interaction.client.user.username} | Loop`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+			embed.setColor(config.app.color);
+			embed.setDescription(language.NO_MUSIC + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
+			embed.setTimestamp();
+			embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
+			return interaction.reply({ embeds: [embed] });
+		} 
 
-        if (query.toLowerCase() === 'queue') {
-            if (queue.repeatMode === 1) {
+		if (query.toLowerCase() === 'queue') {
+			if (queue.repeatMode === 1) {
 				embed.setAuthor({ name: `${interaction.client.user.username} | Loop`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
 				embed.setColor(config.app.color);
 				embed.setDescription(language.DISABLE_CURRENT_MUSIC + ` (${prefix}loop) ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
@@ -34,9 +34,9 @@ module.exports = {
 				return interaction.reply({ embeds: [embed] });
 			}
 
-            const success = queue.setRepeatMode(queue.repeatMode === 0 ? QueueRepeatMode.QUEUE : QueueRepeatMode.OFF);
+			const success = queue.setRepeatMode(queue.repeatMode === 0 ? QueueRepeatMode.QUEUE : QueueRepeatMode.OFF);
 
-            if (queue.repeatMode === 1) {
+			if (queue.repeatMode === 1) {
 				embed.setAuthor({ name: `${interaction.client.user.username} | Loop`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
 				embed.setColor(config.app.color);
 				embed.setDescription(success ? language.REPEAT_MODE + ` **${queue.repeatMode === 0 ? 'disabled' : 'enabled'}** ` + language.QUEUE_REPEATED + ` 🔁` : language.SOMETHING_WRONG + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
@@ -46,22 +46,22 @@ module.exports = {
 			}
 
 		} else if (queue.repeatMode === 2) {
-            embed.setAuthor({ name: `${interaction.client.user.username} | Loop`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
-            embed.setColor(config.app.color);
-            embed.setDescription(language.DISABLE_CURRENT_QUEUE + ` (${prefix}loop queue) ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
-            embed.setTimestamp();
-            embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
-            return interaction.reply({ embeds: [embed] });
-        }
+			embed.setAuthor({ name: `${interaction.client.user.username} | Loop`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+			embed.setColor(config.app.color);
+			embed.setDescription(language.DISABLE_CURRENT_QUEUE + ` (${prefix}loop queue) ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
+			embed.setTimestamp();
+			embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
+			return interaction.reply({ embeds: [embed] });
+		}
 
-        const success = queue.setRepeatMode(queue.repeatMode === 0 ? QueueRepeatMode.TRACK : QueueRepeatMode.OFF);
+		const success = queue.setRepeatMode(queue.repeatMode === 0 ? QueueRepeatMode.TRACK : QueueRepeatMode.OFF);
 
-        embed.setAuthor({ name: `${interaction.client.user.username} | Loop`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
-        embed.setColor(config.app.color);
-        embed.setDescription(success ? language.REPEAT_MODE + ` **${queue.repeatMode === 0 ? 'disabled' : 'enabled'}** ` + language.MUSIC_REPEATED_ENDLESSLY + ` 🔂` : language.SOMETHING_WRONG + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
-        embed.setTimestamp();
-        embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
-        return interaction.reply({ embeds: [embed] });
+		embed.setAuthor({ name: `${interaction.client.user.username} | Loop`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+		embed.setColor(config.app.color);
+		embed.setDescription(success ? language.REPEAT_MODE + ` **${queue.repeatMode === 0 ? 'disabled' : 'enabled'}** ` + language.MUSIC_REPEATED_ENDLESSLY + ` 🔂` : language.SOMETHING_WRONG + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
+		embed.setTimestamp();
+		embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
+		return interaction.reply({ embeds: [embed] });
 
-    },
+	},
 };

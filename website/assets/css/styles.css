@@ -76,9 +76,9 @@
 
 @media (max-width:767px) {
   .features-boxed h2 {
-    margin-bottom: 25px;
-    padding-top: 25px;
-    font-size: 24px;
+	margin-bottom: 25px;
+	padding-top: 25px;
+	font-size: 24px;
   }
 }
 
@@ -283,31 +283,31 @@ div#features:hover {
   padding: 18px;
 }
 .footer {
-    text-align: center !important;
-    background: #353e4c !important;
-    padding: 5px 6px !important;
-    color: #ecf2ff;
-    font-size: 14px !important
+	text-align: center !important;
+	background: #353e4c !important;
+	padding: 5px 6px !important;
+	color: #ecf2ff;
+	font-size: 14px !important
 }
 
 .footer a {
-    color: #6086f6 !important;
-    text-decoration: none !important;
-    font-weight: bold !important;
+	color: #6086f6 !important;
+	text-decoration: none !important;
+	font-weight: bold !important;
 }
 .start {
-    text-align: center !important;
-    background: #7289DA !important;
-    padding: 60px 50px !important
+	text-align: center !important;
+	background: #7289DA !important;
+	padding: 60px 50px !important
 }
 
 .start .card {
-    background: rgba(255, 255, 255, 0.83) !important;
-    color: #353e4c !important;
+	background: rgba(255, 255, 255, 0.83) !important;
+	color: #353e4c !important;
 }
 
 .start .card .subtitle {
-    color: rgba(53, 62, 76, 0.6) !important;
-    font-size: 16px !important;
+	color: rgba(53, 62, 76, 0.6) !important;
+	font-size: 16px !important;
 }
 

@@ -1,31 +1,31 @@
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
-    name: 'pause',
+	name: 'pause',
 	description: 'pause current music',
-    permission: "SEND_MESSAGES",
-    voiceChannel: true,
+	permission: "SEND_MESSAGES",
+	voiceChannel: true,
 
-    execute(interaction) {
-        const queue = player.getQueue(interaction.guild.id);
-        const embed = new MessageEmbed();
+	execute(interaction) {
+		const queue = player.getQueue(interaction.guild.id);
+		const embed = new MessageEmbed();
 
-        if (!queue) {
-            embed.setAuthor({ name: `${interaction.client.user.username} | Pause`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
-            embed.setColor(config.app.color);
-            embed.setDescription(language.NO_MUSIC + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
-            embed.setTimestamp();
-            embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
-            return interaction.reply({ embeds: [embed] });
-        } 
+		if (!queue) {
+			embed.setAuthor({ name: `${interaction.client.user.username} | Pause`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+			embed.setColor(config.app.color);
+			embed.setDescription(language.NO_MUSIC + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
+			embed.setTimestamp();
+			embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
+			return interaction.reply({ embeds: [embed] });
+		} 
 
-        const success = queue.setPaused(true);
+		const success = queue.setPaused(true);
 
-        embed.setAuthor({ name: `${interaction.client.user.username} | Pause`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
-        embed.setColor(config.app.color);
-        embed.setDescription(success ? language.CURRENT_MUSIC + ` ${queue.current.title} ` + language.PAUSED + ` ✅` : `` + language.SOMETHING_WRONG + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
-        embed.setTimestamp();
-        embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
-        interaction.reply({ embeds: [embed] });
-    },
+		embed.setAuthor({ name: `${interaction.client.user.username} | Pause`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+		embed.setColor(config.app.color);
+		embed.setDescription(success ? language.CURRENT_MUSIC + ` ${queue.current.title} ` + language.PAUSED + ` ✅` : `` + language.SOMETHING_WRONG + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
+		embed.setTimestamp();
+		embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
+		interaction.reply({ embeds: [embed] });
+	},
 };

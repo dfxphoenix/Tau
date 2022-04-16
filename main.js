@@ -14,12 +14,12 @@ if (config.app.slashCommands && config.app.slashCommands !== "") {
 }
 
 global.client = new Client({
-    intents: [
-        Intents.FLAGS.GUILDS,
-        Intents.FLAGS.GUILD_MEMBERS,
-        Intents.FLAGS.GUILD_MESSAGES,
-        Intents.FLAGS.GUILD_VOICE_STATES
-    ],
+	intents: [
+		Intents.FLAGS.GUILDS,
+		Intents.FLAGS.GUILD_MEMBERS,
+		Intents.FLAGS.GUILD_MESSAGES,
+		Intents.FLAGS.GUILD_VOICE_STATES
+	],
 });
 
 global.player = new Player(client, config.opt.discordPlayer);
@@ -51,9 +51,9 @@ app.get('/api', function(req, res) {
   const channels = client.channels.cache.size;
 
   res.send({
-    'guilds': guilds,
-    'users': users,
-    'channels': channels
+	'guilds': guilds,
+	'users': users,
+	'channels': channels
   });
 });
 

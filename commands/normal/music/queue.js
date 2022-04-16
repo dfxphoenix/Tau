@@ -1,49 +1,49 @@
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
-    name: 'queue',
-    aliases: ['q'],
-    utilisation: '{prefix}queue',
-    permission: "SEND_MESSAGES",
-    voiceChannel: true,
+	name: 'queue',
+	aliases: ['q'],
+	utilisation: '{prefix}queue',
+	permission: "SEND_MESSAGES",
+	voiceChannel: true,
 
-    execute(client, message) {
-        const queue = player.getQueue(message.guild.id);
-        const embed = new MessageEmbed();
+	execute(client, message) {
+		const queue = player.getQueue(message.guild.id);
+		const embed = new MessageEmbed();
 
-        if (!queue) {
-            embed.setAuthor({ name: `${client.user.username} | Queue`, iconURL: `${client.user.displayAvatarURL()}` });
-            embed.setColor(config.app.color);
-            embed.setDescription(language.NO_MUSIC + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
-            embed.setTimestamp();
-            embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
-            return message.channel.send({ embeds: [embed] });
-        } 
+		if (!queue) {
+			embed.setAuthor({ name: `${client.user.username} | Queue`, iconURL: `${client.user.displayAvatarURL()}` });
+			embed.setColor(config.app.color);
+			embed.setDescription(language.NO_MUSIC + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
+			embed.setTimestamp();
+			embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
+			return message.channel.send({ embeds: [embed] });
+		} 
 
-        if (!queue.tracks[0]) {
-            embed.setAuthor({ name: `${client.user.username} | Queue`, iconURL: `${client.user.displayAvatarURL()}` });
-            embed.setColor(config.app.color);
-            embed.setDescription(language.NO_MUSIC_QUEUE + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
-            embed.setTimestamp();
-            embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
-            return message.channel.send({ embeds: [embed] });
-        } 
+		if (!queue.tracks[0]) {
+			embed.setAuthor({ name: `${client.user.username} | Queue`, iconURL: `${client.user.displayAvatarURL()}` });
+			embed.setColor(config.app.color);
+			embed.setDescription(language.NO_MUSIC_QUEUE + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
+			embed.setTimestamp();
+			embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
+			return message.channel.send({ embeds: [embed] });
+		} 
 
-        const methods = ['', '🔁', '🔂'];
+		const methods = ['', '🔁', '🔂'];
 
-        embed.setAuthor({ name: `${client.user.username} | Queue`, iconURL: `${client.user.displayAvatarURL()}` });
-        embed.setColor(config.app.color);
+		embed.setAuthor({ name: `${client.user.username} | Queue`, iconURL: `${client.user.displayAvatarURL()}` });
+		embed.setColor(config.app.color);
 
-        const tracks = queue.tracks.map((track, i) => `**${i + 1}** - ${track.title} | ${track.author} (requested by : ${track.requestedBy.username})`);
+		const tracks = queue.tracks.map((track, i) => `**${i + 1}** - ${track.title} | ${track.author} (requested by : ${track.requestedBy.username})`);
 
-        const songs = queue.tracks.length;
-        const nextSongs = songs > 5 ? language.AND + ` **${songs - 5}** ` + language.OTHER_SONGS + `...` : language.IN_PLAYLIST + ` **${songs}** ` + language.SONGS + `...`;
+		const songs = queue.tracks.length;
+		const nextSongs = songs > 5 ? language.AND + ` **${songs - 5}** ` + language.OTHER_SONGS + `...` : language.IN_PLAYLIST + ` **${songs}** ` + language.SONGS + `...`;
 
-        embed.setDescription(language.CURRENT + ` ${queue.current.title}\n\n${tracks.slice(0, 5).join('\n')}\n\n${nextSongs}`);
+		embed.setDescription(language.CURRENT + ` ${queue.current.title}\n\n${tracks.slice(0, 5).join('\n')}\n\n${nextSongs}`);
 
-        embed.setTimestamp();
-        embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
+		embed.setTimestamp();
+		embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
 
-        message.channel.send({ embeds: [embed] });
-    },
+		message.channel.send({ embeds: [embed] });
+	},
 };

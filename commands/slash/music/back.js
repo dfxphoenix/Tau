@@ -1,40 +1,40 @@
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
-    name: 'back',
+	name: 'back',
 	description: 'back the music',
-    permission: "SEND_MESSAGES",
-    voiceChannel: true,
+	permission: "SEND_MESSAGES",
+	voiceChannel: true,
 
-    async execute(interaction) {
-        const queue = player.getQueue(interaction.guild.id);
-        const embed = new MessageEmbed();
+	async execute(interaction) {
+		const queue = player.getQueue(interaction.guild.id);
+		const embed = new MessageEmbed();
 
-        if (!queue || !queue.playing) {
-            embed.setAuthor({ name: `${interaction.client.user.username} | Back`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
-            embed.setColor(config.app.color);
-            embed.setDescription(language.NO_MUSIC + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
-            embed.setTimestamp();
-            embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
-            return interaction.reply({ embeds: [embed] });
-        }
+		if (!queue || !queue.playing) {
+			embed.setAuthor({ name: `${interaction.client.user.username} | Back`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+			embed.setColor(config.app.color);
+			embed.setDescription(language.NO_MUSIC + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
+			embed.setTimestamp();
+			embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
+			return interaction.reply({ embeds: [embed] });
+		}
 
-        if (!queue.previousTracks[1]) {
-            embed.setAuthor({ name: `${interaction.client.user.username} | Back`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
-            embed.setColor(config.app.color);
-            embed.setDescription(language.NO_MUSIC_BEFORE + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
-            embed.setTimestamp();
-            embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
-            return interaction.reply({ embeds: [embed] });
-        }
+		if (!queue.previousTracks[1]) {
+			embed.setAuthor({ name: `${interaction.client.user.username} | Back`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+			embed.setColor(config.app.color);
+			embed.setDescription(language.NO_MUSIC_BEFORE + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
+			embed.setTimestamp();
+			embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
+			return interaction.reply({ embeds: [embed] });
+		}
 
-        await queue.back();
+		await queue.back();
 
-        embed.setAuthor({ name: `${interaction.client.user.username} | Back`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
-        embed.setColor(config.app.color);
-        embed.setDescription(language.PLAYING + ` ✅`);
-        embed.setTimestamp();
-        embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
-        interaction.reply({ embeds: [embed] });
-    },
+		embed.setAuthor({ name: `${interaction.client.user.username} | Back`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+		embed.setColor(config.app.color);
+		embed.setDescription(language.PLAYING + ` ✅`);
+		embed.setTimestamp();
+		embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
+		interaction.reply({ embeds: [embed] });
+	},
 };
