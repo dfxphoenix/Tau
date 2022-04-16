@@ -5,7 +5,7 @@
 [![](https://img.shields.io/discord/568120814776614924.svg?logo=discord&colorB=00BFFF&label=Atlanta%20Emojis)](https://discord.gg/NPkySYKMkN)
 [![](https://img.shields.io/badge/discord.js-v13.6.0-blue.svg?logo=npm)](https://github.com/discordjs)
 [![](https://img.shields.io/badge/paypal-donate-blue.svg)](https://paypal.me/dfxphoenix)
-[![](https://www.codefactor.io/repository/github/Androz2091/AtlantaBot/badge)](https://www.codefactor.io/repository/github/Androz2091/AtlantaBot)
+[![](https://www.codefactor.io/repository/github/dfxphoenix/Tau/badge)](https://www.codefactor.io/repository/github/dfxphoenix/Tau)
 
 <p>A complete sourcecode from Discord Music Bot written in JavaScript with NodeJS.</p>
 <br>
