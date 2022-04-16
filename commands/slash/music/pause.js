@@ -19,13 +19,13 @@ module.exports = {
 			return interaction.reply({ embeds: [embed] });
 		} 
 
-		queue.setPaused(true);
+		const succes = queue.setPaused(true);
 
 		embed.setAuthor({ name: `${interaction.client.user.username} | Pause`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
 		embed.setColor(config.app.color);
 		embed.setDescription(success ? language.CURRENT_MUSIC + ` ${queue.current.title} ` + language.PAUSED + ` ✅` : `` + language.SOMETHING_WRONG + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
 		embed.setTimestamp();
 		embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
-		interaction.reply({ embeds: [embed] });
+		return interaction.reply({ embeds: [embed] });
 	},
 };
