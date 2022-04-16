@@ -1,3 +1,4 @@
+<img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="Tau" src="https://i.goopics.net/lEENx.png"> 
 # Tau
 <p>A complete sourcecode from Discord Music Bot written in JavaScript with NodeJS.</p>
 <br>
