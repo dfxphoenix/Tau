@@ -25,7 +25,7 @@ module.exports = {
             if (queue.repeatMode === 1) {
 				embed.setAuthor({ name: `${client.user.username} | Loop`, iconURL: `${client.user.displayAvatarURL()}` });
 				embed.setColor(config.app.color);
-				embed.setDescription(language.DISABLE_CURRENT_MUSIC + ` (${config.app.px}loop) ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
+				embed.setDescription(language.DISABLE_CURRENT_MUSIC + ` (${prefix}loop) ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
 				embed.setTimestamp();
 				embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
 				return message.channel.send({ embeds: [embed] });
@@ -45,7 +45,7 @@ module.exports = {
 		} else if (queue.repeatMode === 2) {
             embed.setAuthor({ name: `${client.user.username} | Loop`, iconURL: `${client.user.displayAvatarURL()}` });
             embed.setColor(config.app.color);
-            embed.setDescription(language.DISABLE_CURRENT_QUEUE + ` (${config.app.px}loop queue) ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
+            embed.setDescription(language.DISABLE_CURRENT_QUEUE + ` (${prefix}loop queue) ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
             embed.setTimestamp();
             embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
             return message.channel.send({ embeds: [embed] });

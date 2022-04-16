@@ -5,8 +5,6 @@ module.exports = (client, message) => {
 
     const embed = new MessageEmbed();
 
-    const prefix = config.app.px;
-
     if (message.content.indexOf(prefix) !== 0) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);

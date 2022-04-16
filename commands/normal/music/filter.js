@@ -25,7 +25,7 @@ module.exports = {
         if (!args[0]) {
             embed.setAuthor({ name: `${client.user.username} | Filter`, iconURL: `${client.user.displayAvatarURL()}` });
             embed.setColor(config.app.color);
-            embed.setDescription(language.VALID_FILTER + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌\n` + `${actualFilter ? `${language.FILTER_ACTIVE} **${actualFilter}** (${config.app.px}filter ${actualFilter} ${language.TO_DISABLE}).\n` : ''}`);
+            embed.setDescription(language.VALID_FILTER + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌\n` + `${actualFilter ? `${language.FILTER_ACTIVE} **${actualFilter}** (${prefix}filter ${actualFilter} ${language.TO_DISABLE}).\n` : ''}`);
             embed.setTimestamp();
             embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
             return message.channel.send({ embeds: [embed] });

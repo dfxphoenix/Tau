@@ -30,7 +30,7 @@ module.exports = {
         if (!query) {
             embed.setAuthor({ name: `${interaction.client.user.username} | Filter`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
             embed.setColor(config.app.color);
-            embed.setDescription(language.VALID_FILTER + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌\n` + `${actualFilter ? `${language.FILTER_ACTIVE} **${actualFilter}** (${config.app.px}filter ${actualFilter} ${language.TO_DISABLE}).\n` : ''}`);
+            embed.setDescription(language.VALID_FILTER + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌\n` + `${actualFilter ? `${language.FILTER_ACTIVE} **${actualFilter}** (${prefix}filter ${actualFilter} ${language.TO_DISABLE}).\n` : ''}`);
             embed.setTimestamp();
             embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
             return interaction.reply({ embeds: [embed] });

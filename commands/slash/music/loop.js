@@ -30,7 +30,7 @@ module.exports = {
             if (queue.repeatMode === 1) {
 				embed.setAuthor({ name: `${interaction.client.user.username} | Loop`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
 				embed.setColor(config.app.color);
-				embed.setDescription(language.DISABLE_CURRENT_MUSIC + ` (${config.app.px}loop) ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
+				embed.setDescription(language.DISABLE_CURRENT_MUSIC + ` (${prefix}loop) ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
 				embed.setTimestamp();
 				embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
 				return interaction.reply({ embeds: [embed] });
@@ -50,7 +50,7 @@ module.exports = {
 		} else if (queue.repeatMode === 2) {
             embed.setAuthor({ name: `${interaction.client.user.username} | Loop`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
             embed.setColor(config.app.color);
-            embed.setDescription(language.DISABLE_CURRENT_QUEUE + ` (${config.app.px}loop queue) ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
+            embed.setDescription(language.DISABLE_CURRENT_QUEUE + ` (${prefix}loop queue) ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
             embed.setTimestamp();
             embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
             return interaction.reply({ embeds: [embed] });
