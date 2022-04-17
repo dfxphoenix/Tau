@@ -30,15 +30,19 @@ player.on('botDisconnect', (queue) => {
 });
 
 player.on('channelEmpty', (queue) => {
-	embed.setColor(config.app.color);
-	embed.setDescription(language.NOBODY_IS_ON_CHANNEL + '... ❌');
-	queue.metadata.send({ embeds: [embed] });
+	if (config.opt.playerOptions.leaveOnEmpty && config.opt.playerOptions.leaveOnEmpty !== "") {
+		embed.setColor(config.app.color);
+		embed.setDescription(language.NOBODY_IS_ON_CHANNEL + '... ❌');
+		queue.metadata.send({ embeds: [embed] });
+	}
 });
 
 player.on('queueEnd', (queue) => {
-	embed.setColor(config.app.color);
-	embed.setDescription(language.FINISHED_READING + ' ✅');
-	queue.metadata.send({ embeds: [embed] });
+	if (config.opt.playerOptions.leaveOnEnd && config.opt.playerOptions.leaveOnEnd !== "") {
+		embed.setColor(config.app.color);
+		embed.setDescription(language.FINISHED_READING + ' ✅');
+		queue.metadata.send({ embeds: [embed] });
+	}
 });
 
 if (config.app.slashCommands && config.app.slashCommands !== "") {

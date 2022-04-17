@@ -29,7 +29,12 @@ module.exports = {
 		}
 
 		const queue = await player.createQueue(interaction.guild, {
-			metadata: interaction.channel
+			metadata: interaction.channel,
+			bufferingTimeout: 1000,
+			leaveOnEnd: config.opt.playerOptions.leaveOnEnd,
+			leaveOnEmpty: config.opt.playerOptions.leaveOnEmpty,
+			autoSelfDeaf: config.opt.playerOptions.autoSelfDeaf,
+			spotifyBridge: config.opt.playerOptions.spotifyBridge
 		});
 
 		embed.setColor(config.app.color);
@@ -37,7 +42,7 @@ module.exports = {
 
 		const maxTracks = res.tracks.slice(0, 10);
 
-		embed.setDescription(language.RESULTS_FOR + ` ${args.join(' ')}\n\n${maxTracks.map((track, i) => `**${i + 1}**. ${track.title} | ${track.author}`).join('\n')}\n\n` + language.SELECT_CHOICE + ` **1** ` + language.AND + ` **${maxTracks.length}** ` + language.OR + ` **cancel** ⬇️`);
+		embed.setDescription(language.RESULTS_FOR + ` ${query}\n\n${maxTracks.map((track, i) => `**${i + 1}**. ${track.title} | ${track.author}`).join('\n')}\n\n` + language.SELECT_CHOICE + ` **1** ` + language.AND + ` **${maxTracks.length}** ` + language.OR + ` **cancel** ⬇️`);
 		embed.setTimestamp();
 		embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
 
@@ -46,20 +51,20 @@ module.exports = {
 		const collector = interaction.channel.createMessageCollector({
 			time: 15000,
 			errors: ['time'],
-			filter: m => m.author.id === interaction.user.username.id
+			filter: m => m.author.id === interaction.user.id
 		});
 
 		collector.on('collect', async (query) => {
-			if (query.content.toLowerCase() === 'cancel') {
+			if (query === 'cancel') {
 				embed.setAuthor({ name: `${interaction.client.user.username} | Search`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
 				embed.setColor(config.app.color);
 				embed.setDescription(language.SEARCH_CANCELED + ` ✅`);
 				embed.setTimestamp();
 				embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
-				return interaction.reply({ embeds: [embed] }) && collector.stop();
+				return interaction.channel.send({ embeds: [embed] }) && collector.stop();
 		}
 
-			const value = parseInt(query.content);
+			const value = parseInt(query);
 
 			if (!value || value <= 0 || value > maxTracks.length) {
 				embed.setAuthor({ name: `${interaction.client.user.username} | Search`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
@@ -67,7 +72,7 @@ module.exports = {
 				embed.setDescription(language.INVALID_RESPONSE + ` **1** ` + language.AND + ` **${maxTracks.length}** ` + language.OR + ` **cancel**... ` + language.TRY_AGAIN + ` ❌`);
 				embed.setTimestamp();
 				embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
-				return interaction.reply({ embeds: [embed] });
+				return interaction.channel.send({ embeds: [embed] });
 		}
 
 			collector.stop();
@@ -81,7 +86,7 @@ module.exports = {
 				embed.setDescription(language.JOIN_VOICE + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
 				embed.setTimestamp();
 				embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
-				return interaction.reply({ embeds: [embed] });
+				return interaction.channel.send({ embeds: [embed] });
 			}
 
 			embed.setAuthor({ name: `${interaction.client.user.username} | Search`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
@@ -89,7 +94,7 @@ module.exports = {
 			embed.setDescription(language.LOADING_SEARCH + ` 🎧`);
 			embed.setTimestamp();
 			embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
-			await interaction.reply({ embeds: [embed] });
+			await interaction.channel.send({ embeds: [embed] });
 
 			queue.addTrack(res.tracks[query.content - 1]);
 
@@ -103,7 +108,7 @@ module.exports = {
 				embed.setDescription(language.SEARCH_TIME_OUT + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
 				embed.setTimestamp();
 				embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
-				return interaction.reply({ embeds: [embed] });
+				return interaction.channel.send({ embeds: [embed] });
 			}
 		});
 	},

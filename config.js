@@ -21,6 +21,12 @@ module.exports = {
 		},
 		maxVol: 100,
 		loopMessage: false,
+		playerOptions: {
+			leaveOnEnd: true,
+			leaveOnEmpty: false,
+			autoSelfDeaf: true,
+			spotifyBridge: true
+		},
 		discordPlayer: {
 			ytdlOptions: {
 				quality: 'highestaudio',

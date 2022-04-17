@@ -35,7 +35,12 @@ module.exports = {
 		}
 
 		const queue = await player.createQueue(message.guild, {
-			metadata: message.channel
+			metadata: message.channel,
+			bufferingTimeout: 1000,
+			leaveOnEnd: config.opt.playerOptions.leaveOnEnd,
+			leaveOnEmpty: config.opt.playerOptions.leaveOnEmpty,
+			autoSelfDeaf: config.opt.playerOptions.autoSelfDeaf,
+			spotifyBridge: config.opt.playerOptions.spotifyBridge
 		});
 
 		embed.setColor(config.app.color);
