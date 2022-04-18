@@ -53,7 +53,7 @@ if (config.app.slashCommands && config.app.slashCommands !== "") {
 			options: fileSlash.options,
 			defaultPermission: true
 		}));
-		const CLIENT_ID = client.user.id;
+		const CLIENT_ID = config.app.id;
 		const rest = new REST({version: '9'}).setToken(config.app.token);
 		(async () => {
 			try {
@@ -62,7 +62,25 @@ if (config.app.slashCommands && config.app.slashCommands !== "") {
 						body: slashCommands
 					},
 				);
-					console.log('Successfully registered application commands globally');
+			} catch (error) {
+				if (error) console.error(error);
+			}
+		})();
+	});
+} else {
+	client.once('ready', () => {
+		const normalCommands = commands.map(fileNormal => ({
+			defaultPermission: false
+		}));
+		const CLIENT_ID = config.app.id;
+		const rest = new REST({version: '9'}).setToken(config.app.token);
+		(async () => {
+			try {
+				await rest.put(
+					Routes.applicationCommands(CLIENT_ID), {
+						body: normalCommands
+					},
+				);
 			} catch (error) {
 				if (error) console.error(error);
 			}
