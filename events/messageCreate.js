@@ -1,7 +1,7 @@
 const { MessageEmbed } = require('discord.js');
 
- module.exports = (client, message) => {
-	if (!config.app.slashCommands && config.app.slashCommands !== '') {
+module.exports = (client, message) => {
+	if (!config.app.slashCommands && config.app.slashCommands !== '' && functions.canSend(message)) {
 		if (message.author.bot || message.channel.type === 'dm') return;
 
 		const embed = new MessageEmbed();

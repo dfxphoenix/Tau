@@ -1,17 +1,57 @@
-module.exports = (client, int) => {
-	if (!int.isButton()) return;
+const { MessageEmbed } = require('discord.js');
 
-	const queue = player.getQueue(int.guildId);
+if (config.app.slashCommands && config.app.slashCommands !== "") {
+	client.on('interactionCreate', async interaction => {
+		if (!interaction.isCommand()) return;
 
-	switch (int.customId) {
-		case 'saveTrack': {
-			if (!queue || !queue.playing) return int.reply({ content: language.NO_MUSIC + `... ` + language.TRY_AGAIN + ` ❌`, ephemeral: true, components: [] });
+		const command = client.commands.find(cmd => cmd.name.toLowerCase() == interaction.commandName);
 
-			int.member.send(language.YOU_SAVED_TRACK + ` ${queue.current.title} | ${queue.current.author} ` + langauge.FROM_THE_SERVER + ` ${int.member.guild.name} ✅`).then(() => {
-				return int.reply({ content: language.SENT_TITLE + ` ✅`, ephemeral: true, components: [] });
-			}).catch(() => {
-				return int.reply({ content: language.UNABLE_TO_SEND + `... ` + language.TRY_AGAIN + ` ❌`, ephemeral: true, components: [] });
-			});
+		if (!command) return;
+
+		if (!interaction.member.permissionsIn(interaction.channel).has(command.permission))
+		return interaction.reply("You don't have permission to run this command!");
+
+		const embed = new MessageEmbed();
+
+		const args = interaction.options._hoistedOptions.map(option => option.value);
+
+		const DJ = config.opt.DJ;
+
+		if (command && DJ.enabled && DJ.commands.includes(command.name)) {
+
+			for (var y = 0; y < DJ.roleName.length; y++) {
+				var roleDJ = interaction.guild.roles.cache.find(x => x.name === DJ.roleName[y]);
+			}
+
+			if (!interaction.member._roles.includes(roleDJ.id)) {
+				embed.setAuthor({ name: `${interaction.client.user.username} | Play`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+				embed.setColor(config.app.color);
+				embed.setDescription(language.THIS_COMMAND + ` ${DJ.roleName} ` + language.ROLE_ON_SERVER + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
+				return interaction.reply({ embeds: [embed] });
+			}
 		}
-	}
-};
+
+		if (command && command.voiceChannel) {
+			if (!interaction.member.voice.channelId) {
+				embed.setAuthor({ name: `${interaction.client.user.username} | Play`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+				embed.setColor(config.app.color);
+				embed.setDescription(language.NOT_IN_CHANNEL + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
+				return interaction.reply({ embeds: [embed] });
+			}
+
+			if (interaction.guild.me.voice.channel && interaction.member.voice.channelId !== interaction.guild.me.voice.channelId) {
+				embed.setAuthor({ name: `${interaction.client.user.username} | Play`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+				embed.setColor(config.app.color);
+				embed.setDescription(language.YOU_ARE_NOT + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
+				return interaction.reply({ embeds: [embed] });
+			}
+		}
+
+		try {
+			await command.execute(interaction);
+		} catch (error) {
+			if (error) console.log(error);
+			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+		}
+	});
+}

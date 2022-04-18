@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 
 config = require('./config');
+functions = require('./lib/functions');
 
 language = require(`./languages/${config.app.language}.json`);
 
@@ -27,6 +28,7 @@ global.player = new Player(client, config.opt.discordPlayer);
 
 require('./src/loader');
 require('./src/events');
+require('./events/interactionCreate');
 
 app.use(express.static('website/assets'));
 app.engine('ejs', require('ejs').renderFile);

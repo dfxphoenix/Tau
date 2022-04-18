@@ -60,7 +60,7 @@ module.exports = {
 		embed.setDescription(language.LOADING + ` ${res.playlist ? language.PLAYLIST : language.TRACK}... 🎧`);
 		embed.setTimestamp();
 		embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
-		await message.channel.send({ embeds: [embed] });
+		message.channel.send({ embeds: [embed] });
 
 		res.playlist ? queue.addTracks(res.tracks) : queue.addTrack(res.tracks[0]);
 
