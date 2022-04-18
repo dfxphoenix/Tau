@@ -1,7 +1,8 @@
 const { MessageEmbed } = require('discord.js');
 
-if (config.app.slashCommands && config.app.slashCommands !== "") {
-	client.on('interactionCreate', async interaction => {
+client.on('interactionCreate', async interaction => {
+	if (config.app.slashCommands && config.app.slashCommands !== "" && functions.canInteract(interaction)) {
+
 		if (!interaction.isCommand()) return;
 
 		const command = client.commands.find(cmd => cmd.name.toLowerCase() == interaction.commandName);
@@ -53,5 +54,7 @@ if (config.app.slashCommands && config.app.slashCommands !== "") {
 			if (error) console.log(error);
 			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 		}
-	});
-}
+	} else {
+		interaction.reply({ content: 'Commands are blocked in this channel!', ephemeral: true });
+	}
+});
