@@ -55,6 +55,6 @@ client.on('interactionCreate', async interaction => {
 			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 		}
 	} else {
-		interaction.reply({ content: 'Commands are blocked in this channel!', ephemeral: true });
+		interaction.reply({ content: 'No Send Messages permission detected!', ephemeral: true });
 	}
 });
