@@ -46,6 +46,13 @@ module.exports = {
 			spotifyBridge: config.opt.playerOptions.spotifyBridge
 		});
 
+		embed.setAuthor({ name: `${interaction.client.user.username} | Play`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+		embed.setColor(config.app.color);
+		embed.setDescription(language.LOADING + ` ${res.playlist ? language.PLAYLIST : language.TRACK}... 🎧`);
+		embed.setTimestamp();
+		embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
+		interaction.reply({ embeds: [embed] });
+
 		try {
 			if (!queue.connection) await queue.connect(interaction.member.voice.channel);
 		} catch {
@@ -55,15 +62,8 @@ module.exports = {
 			embed.setDescription(language.JOIN_VOICE + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
 			embed.setTimestamp();
 			embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
-			return interaction.reply({ embeds: [embed] });
+			return interaction.channel.send({ embeds: [embed] });
 		}
-
-		embed.setAuthor({ name: `${interaction.client.user.username} | Play`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
-		embed.setColor(config.app.color);
-		embed.setDescription(language.LOADING + ` ${res.playlist ? language.PLAYLIST : language.TRACK}... 🎧`);
-		embed.setTimestamp();
-		embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
-		await interaction.reply({ embeds: [embed] });
 
 		res.playlist ? queue.addTracks(res.tracks) : queue.addTrack(res.tracks[0]);
 
