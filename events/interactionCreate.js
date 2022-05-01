@@ -9,12 +9,7 @@ client.on('interactionCreate', async interaction => {
 
 		if (!command) return;
 
-		if (!interaction.member.permissionsIn(interaction.channel).has(command.permission))
-		return interaction.reply("You don't have permission to run this command!");
-
 		const embed = new MessageEmbed();
-
-		const args = interaction.options._hoistedOptions.map(option => option.value);
 
 		const DJ = config.opt.DJ;
 
