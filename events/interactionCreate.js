@@ -2,6 +2,7 @@ const { MessageEmbed } = require('discord.js');
 
 client.on('interactionCreate', async interaction => {
 	if (config.app.slashCommands && config.app.slashCommands !== "") {
+		if (!functions.canSend(interaction)) return interaction.reply({ content: 'I have not permission to send message here!', ephemeral: true });
 
 		if (!interaction.isCommand()) return;
 
