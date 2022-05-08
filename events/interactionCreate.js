@@ -2,7 +2,7 @@ const { MessageEmbed } = require('discord.js');
 
 client.on('interactionCreate', async interaction => {
 	if (config.app.slashCommands && config.app.slashCommands !== "") {
-		if (!functions.canSend(interaction)) return interaction.reply({ content: 'I have not permission to send message here!', ephemeral: true });
+		if (!functions.canSend(interaction)) return interaction.reply({ content: language.I_HAVE_NOT_PERMISSION + "!", ephemeral: true });
 
 		if (!interaction.isCommand()) return;
 
@@ -48,7 +48,7 @@ client.on('interactionCreate', async interaction => {
 			await command.execute(interaction);
 		} catch (error) {
 			if (error) console.log(error);
-			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+			await interaction.reply({ content: language.THERE_WAS_AN_ERROR + "!", ephemeral: true });
 		}
 	}
 });
