@@ -11,36 +11,46 @@ player.on('connectionError', (queue, error) => {
 });
 
 player.on('trackStart', (queue, track) => {
-	if (!config.opt.loopMessage && queue.repeatMode !== 0) return;
-	embed.setColor(config.app.color);
-	embed.setDescription(language.STARTING_PLAYING + ` ${track.title} ` + language.IN + ` **${queue.connection.channel.name}** 🎧`);
-	queue.metadata.send({ embeds: [embed] });
-});
-
-player.on('trackAdd', (queue, track) => {
-	embed.setColor(config.app.color);
-	embed.setDescription(language.THE_TRACK + ` ${track.title} ` + language.ADDED_IN_QUEUE + ` ✅`);
-	queue.metadata.send({ embeds: [embed] });
-});
-
-player.on('botDisconnect', (queue) => {
-	embed.setColor(config.app.color);
-	embed.setDescription(language.MANUALLY_DISCONNECTED + '... ❌');
-	queue.metadata.send({ embeds: [embed] });
-});
-
-player.on('channelEmpty', (queue) => {
-	if (config.opt.playerOptions.leaveOnEmpty && config.opt.playerOptions.leaveOnEmpty !== "") {
+	if (queue.metadata.guild.me.permissions.has("SEND_MESSAGES")) {
+		if (!config.opt.loopMessage && queue.repeatMode !== 0) return;
 		embed.setColor(config.app.color);
-		embed.setDescription(language.NOBODY_IS_ON_CHANNEL + '... ❌');
+		embed.setDescription(language.STARTING_PLAYING + ` ${track.title} ` + language.IN + ` **${queue.connection.channel.name}** 🎧`);
 		queue.metadata.send({ embeds: [embed] });
 	}
 });
 
-player.on('queueEnd', (queue) => {
-	if (config.opt.playerOptions.leaveOnEnd && config.opt.playerOptions.leaveOnEnd !== "") {
+player.on('trackAdd', (queue, track) => {
+	if (queue.metadata.guild.me.permissions.has("SEND_MESSAGES")) {
 		embed.setColor(config.app.color);
-		embed.setDescription(language.FINISHED_READING + ' ✅');
+		embed.setDescription(language.THE_TRACK + ` ${track.title} ` + language.ADDED_IN_QUEUE + ` ✅`);
 		queue.metadata.send({ embeds: [embed] });
+	}
+});
+
+player.on('botDisconnect', (queue) => {
+	if (queue.metadata.guild.me.permissions.has("SEND_MESSAGES")) {
+		embed.setColor(config.app.color);
+		embed.setDescription(language.MANUALLY_DISCONNECTED + '... ❌');
+		queue.metadata.send({ embeds: [embed] });
+	}
+});
+
+player.on('channelEmpty', (queue) => {
+	if (queue.metadata.guild.me.permissions.has("SEND_MESSAGES")) {
+		if (config.opt.playerOptions.leaveOnEmpty && config.opt.playerOptions.leaveOnEmpty !== "") {
+			embed.setColor(config.app.color);
+			embed.setDescription(language.NOBODY_IS_ON_CHANNEL + '... ❌');
+			queue.metadata.send({ embeds: [embed] });
+		}
+	}
+});
+
+player.on('queueEnd', (queue) => {
+	if (queue.metadata.guild.me.permissions.has("SEND_MESSAGES")) {
+		if (config.opt.playerOptions.leaveOnEnd && config.opt.playerOptions.leaveOnEnd !== "") {
+			embed.setColor(config.app.color);
+			embed.setDescription(language.FINISHED_READING + ' ✅');
+			queue.metadata.send({ embeds: [embed] });
+		}
 	}
 });

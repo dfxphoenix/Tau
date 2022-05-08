@@ -1,7 +1,7 @@
 const { MessageEmbed } = require('discord.js');
 
 client.on('interactionCreate', async interaction => {
-	if (config.app.slashCommands && config.app.slashCommands !== "" && functions.canInteract(interaction)) {
+	if (config.app.slashCommands && config.app.slashCommands !== "") {
 
 		if (!interaction.isCommand()) return;
 
@@ -49,7 +49,5 @@ client.on('interactionCreate', async interaction => {
 			if (error) console.log(error);
 			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 		}
-	} else {
-		interaction.reply({ content: 'No Send Messages permission detected!', ephemeral: true });
 	}
 });
