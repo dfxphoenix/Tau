@@ -14,7 +14,7 @@ module.exports = {
 		embed.setAuthor({ name: `${interaction.client.user.username} | Help`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
 		embed.setColor(config.app.color);
 		embed.setDescription(language.LIST);
-		embed.addField(language.COMMANDS + ` - ${commands.size}`, commands.map(x => `${x.name}`).join(' | '));
+		embed.addField({ name: language.COMMANDS + ` - ${commands.size}`, value: commands.map(x => `${x.name}`).join(' | ') });
 		embed.setTimestamp();
 		embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
 
