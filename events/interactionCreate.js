@@ -2,7 +2,8 @@ const { MessageEmbed } = require('discord.js');
 
 client.on('interactionCreate', async interaction => {
 	if (config.app.slashCommands && config.app.slashCommands !== "") {
-		if (!functions.canSend(interaction) && !functions.canView(interaction)) return interaction.reply({ content: language.I_HAVE_NOT_PERMISSION + "!", ephemeral: true });
+		if (!functions.canSend(interaction)) return interaction.reply({ content: language.I_HAVE_NOT_PERMISSION + "!", ephemeral: true });
+		if (!functions.canView(interaction)) return interaction.reply({ content: language.I_HAVE_NOT_PERMISSION + "!", ephemeral: true });
 
 		if (!interaction.isCommand()) return;
 
