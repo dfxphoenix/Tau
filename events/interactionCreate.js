@@ -1,17 +1,17 @@
 const { MessageEmbed } = require('discord.js');
 
-client.on('interactionCreate', async interaction => {
+module.exports = (client, interaction) => {
 	if (config.app.slashCommands && config.app.slashCommands !== "") {
 		if (!functions.canSend(interaction)) return interaction.reply({ content: language.I_HAVE_NOT_PERMISSION + "!", ephemeral: true });
 		if (!functions.canView(interaction)) return interaction.reply({ content: language.I_HAVE_NOT_PERMISSION + "!", ephemeral: true });
 
 		if (!interaction.isCommand()) return;
 
-		const command = client.commands.find(cmd => cmd.name.toLowerCase() == interaction.commandName);
+		const embed = new MessageEmbed();
+
+        const command = client.commands.find(cmd => cmd.name.toLowerCase() == interaction.commandName);
 
 		if (!command) return;
-
-		const embed = new MessageEmbed();
 
 		const DJ = config.opt.DJ;
 
@@ -46,10 +46,10 @@ client.on('interactionCreate', async interaction => {
 		}
 
 		try {
-			await command.execute(interaction);
+			command.execute(interaction);
 		} catch (error) {
 			if (error) console.log(error);
-			await interaction.reply({ content: language.THERE_WAS_AN_ERROR + "!", ephemeral: true });
+			interaction.reply({ content: language.THERE_WAS_AN_ERROR + "!", ephemeral: true });
 		}
 	}
-});
+};

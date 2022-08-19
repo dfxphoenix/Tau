@@ -13,11 +13,9 @@ console.log(`Loading events...`);
 
 for (const file of events) {
 	console.log(`-> Loaded event ${file.split('.')[0]}`);
-	if (file.split('.')[0] !== "interactionCreate") {
-		const event = require(`../events/${file}`);
-		client.on(file.split('.')[0], event.bind(null, client));
-		delete require.cache[require.resolve(`../events/${file}`)];
-	}
+	const event = require(`../events/${file}`);
+	client.on(file.split('.')[0], event.bind(null, client));
+	delete require.cache[require.resolve(`../events/${file}`)];
 };
 
 console.log(`Loading commands...`);

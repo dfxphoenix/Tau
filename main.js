@@ -28,7 +28,6 @@ global.player = new Player(client, config.opt.discordPlayer);
 
 require('./src/loader');
 require('./src/events');
-require('./events/interactionCreate');
 
 app.use(express.static('website/assets'));
 app.engine('ejs', require('ejs').renderFile);
