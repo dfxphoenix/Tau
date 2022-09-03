@@ -13,12 +13,20 @@ module.exports = {
 		language: 'en_US'
 	},
 
-	opt: {
-		DJ: {
+	rolesGroup: {
+		Normal: {
 			enabled: false,
-			roleName: ['DJ'],
-			commands: ['back', 'clear', 'filter', 'loop', 'pause', 'resume', 'seek', 'shuffle', 'skip', 'stop', 'volume']
+			roleName: ['DJ', 'VIP'],
+			commands: ['back', 'clear', 'loop', 'seek', 'shuffle', 'skip', 'stop', 'volume']
 		},
+		Premium: {
+			enabled: false,
+			roleName: ['VIP'],
+			commands: ['filter']
+		},
+	},
+
+	opt: {
 		maxVol: 100,
 		loopMessage: false,
 		playerOptions: {

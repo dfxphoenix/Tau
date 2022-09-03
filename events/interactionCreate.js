@@ -13,19 +13,28 @@ module.exports = (client, interaction) => {
 
 		if (!command) return;
 
-		const DJ = config.opt.DJ;
+		const roles = config.rolesGroup;
 
-		if (command && DJ.enabled && DJ.commands.includes(command.name)) {
+		for (role in roles) {
 
-			for (var y = 0; y < DJ.roleName.length; y++) {
-				var roleDJ = interaction.guild.roles.cache.find(x => x.name === DJ.roleName[y]);
-			}
+			if (command && roles[role].enabled && roles[role].commands.includes(command.name)) {
 
-			if (!interaction.member._roles.includes(roleDJ.id)) {
-				embed.setAuthor({ name: `${interaction.client.user.username} | Play`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
-				embed.setColor(config.app.color);
-				embed.setDescription(language.THIS_COMMAND + ` ${DJ.roleName} ` + language.ROLE_ON_SERVER + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
-				return interaction.reply({ embeds: [embed] });
+				var rolearray = [];
+
+				for (var y = 0; y < roles[role].roleName.length; y++) {
+					rolearray.push(interaction.guild.roles.cache.find(x => x.name === roles[role].roleName[y]).id);
+				}
+
+				for (var y = 0; y < roles[role].roleName.length; y++) {
+					if (!rolearray.includes(interaction.member._roles[y])) {
+						embed.setAuthor({ name: `${interaction.client.user.username} | Play`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+						embed.setColor(config.app.color);
+						embed.setDescription(language.THIS_COMMAND + ` ${roles[role].roleName} ` + language.ROLE_ON_SERVER + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
+						return interaction.reply({ embeds: [embed] });
+					} else {
+						break;
+					}
+				}
 			}
 		}
 
