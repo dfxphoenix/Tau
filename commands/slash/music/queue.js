@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'queue',
 	description: 'show the playlist',
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 	voiceChannel: true,
 
 	execute(interaction) {

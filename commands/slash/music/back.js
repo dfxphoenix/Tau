@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'back',
 	description: 'back the music',
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 	voiceChannel: true,
 
 	async execute(interaction) {

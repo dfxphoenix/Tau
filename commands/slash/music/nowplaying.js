@@ -3,7 +3,7 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 module.exports = {
 	name: 'nowplaying',
 	description: 'show current music',
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 	voiceChannel: true,
 
 	execute(interaction) {

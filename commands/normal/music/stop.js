@@ -4,7 +4,7 @@ module.exports = {
 	name: 'stop',
 	aliases: ['dc'],
 	utilisation: '{prefix}stop',
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 	voiceChannel: true,
 
 	execute(client, message) {

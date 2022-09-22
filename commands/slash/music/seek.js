@@ -4,7 +4,7 @@ const ms = require('ms');
 module.exports = {
 	name: 'seek',
 	description: 'seeking a music',
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 	voiceChannel: true,
 	options: [
 		{ description: 'Time', name: 'time', required: true, type: 3 },

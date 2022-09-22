@@ -5,7 +5,7 @@ module.exports = {
 	name: 'seek',
 	aliases: [],
 	utilisation: '{prefix}seek [time]',
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 	voiceChannel: true,
 
 	async execute(client, message, args) {

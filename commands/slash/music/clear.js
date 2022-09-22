@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'clear',
 	description: 'clear playlist',
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 	voiceChannel: true,
 
 	async execute(interaction) {

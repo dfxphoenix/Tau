@@ -5,7 +5,7 @@ module.exports = {
 	name: 'ping',
 	aliases: [],
 	utilisation: '{prefix}ping',
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 
 	execute(client, message) {
 		const embed = new MessageEmbed();

@@ -4,7 +4,7 @@ const maxVol = config.opt.maxVol;
 module.exports = {
 	name: 'volume',
 	description: 'set volume of music',
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 	voiceChannel: true,
 	options: [
 		{ description: 'Volumr from 1 to 100', name: 'volume', required: true, type: 3 }

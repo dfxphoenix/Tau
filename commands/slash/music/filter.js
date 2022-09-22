@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'filter',
 	description: 'set filters to music',
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 	voiceChannel: true,
 	options: [
 		{ description: 'Name of filter', name: 'filter', required: false, type: 3 }

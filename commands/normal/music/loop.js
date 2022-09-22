@@ -5,7 +5,7 @@ module.exports = {
 	name: 'loop',
 	aliases: ['lp', 'repeat'],
 	utilisation: '{prefix}loop <queue>',
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 	voiceChannel: true,
 
 	execute(client, message, args) {
@@ -33,14 +33,12 @@ module.exports = {
 
 			const success = queue.setRepeatMode(queue.repeatMode === 0 ? QueueRepeatMode.QUEUE : QueueRepeatMode.OFF);
 
-			if (queue.repeatMode === 1) {
-				embed.setAuthor({ name: `${client.user.username} | Loop`, iconURL: `${client.user.displayAvatarURL()}` });
-				embed.setColor(config.app.color);
-				embed.setDescription(success ? language.REPEAT_MODE + ` **${queue.repeatMode === 0 ? 'disabled' : 'enabled'}** ` + language.QUEUE_REPEATED + ` 🔁` : language.SOMETHING_WRONG + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
-				embed.setTimestamp();
-				embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
-				return message.channel.send({ embeds: [embed] });
-			}
+			embed.setAuthor({ name: `${client.user.username} | Loop`, iconURL: `${client.user.displayAvatarURL()}` });
+			embed.setColor(config.app.color);
+			embed.setDescription(success ? language.REPEAT_MODE + ` **${queue.repeatMode === 0 ? 'disabled' : 'enabled'}** ` + language.QUEUE_REPEATED + ` 🔁` : language.SOMETHING_WRONG + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
+			embed.setTimestamp();
+			embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
+			return message.channel.send({ embeds: [embed] });
 
 		} else if (queue.repeatMode === 2) {
 			embed.setAuthor({ name: `${client.user.username} | Loop`, iconURL: `${client.user.displayAvatarURL()}` });

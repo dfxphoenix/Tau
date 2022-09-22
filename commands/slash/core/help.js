@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
 	name: 'help',
 	description: 'show list of commands',
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 	showHelp: false,
 
 	execute(interaction) {

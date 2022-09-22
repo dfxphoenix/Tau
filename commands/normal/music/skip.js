@@ -4,7 +4,7 @@ module.exports = {
 	name: 'skip',
 	aliases: ['sk'],
 	utilisation: '{prefix}skip',
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 	voiceChannel: true,
 
 	execute(client, message) {

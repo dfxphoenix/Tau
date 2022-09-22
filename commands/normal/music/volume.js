@@ -5,7 +5,7 @@ module.exports = {
 	name: 'volume',
 	aliases: ['vol'],
 	utilisation: `{prefix}volume [1-${maxVol}]`,
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 	voiceChannel: true,
 
 	execute(client, message, args) {

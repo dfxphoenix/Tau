@@ -4,7 +4,7 @@ const ms = require('ms');
 module.exports = {
 	name: 'ping',
 	description: 'get ping of bot',
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 
 	execute(interaction) {
 		const embed = new MessageEmbed();

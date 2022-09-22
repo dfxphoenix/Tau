@@ -4,7 +4,7 @@ module.exports = {
 	name: 'shuffle',
 	aliases: ['sh'],
 	utilisation: '{prefix}shuffle',
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 	voiceChannel: true,
 
 	async execute(client, message) {

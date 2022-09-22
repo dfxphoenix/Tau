@@ -4,7 +4,7 @@ const { QueryType } = require('discord-player');
 module.exports = {
 	name: 'play',
 	description: 'play a music',
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 	voiceChannel: true,
 	options: [
 		{ description: 'URL or song name', name: 'track', required: false, type: 3 }

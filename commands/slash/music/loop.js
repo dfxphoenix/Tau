@@ -4,10 +4,10 @@ const { QueueRepeatMode } = require('discord-player');
 module.exports = {
 	name: 'loop',
 	description: 'repet current playlist',
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 	voiceChannel: true,
 	options: [
-		{ description: 'Queue', name: 'queue', required: true, type: 3 }
+		{ description: 'Queue', name: 'queue', required: false, type: 3 }
 	],
 
 	execute(interaction) {
@@ -24,7 +24,7 @@ module.exports = {
 			return interaction.reply({ embeds: [embed] });
 		} 
 
-		if (query.toLowerCase() === 'queue') {
+		if (query === 'queue') {
 			if (queue.repeatMode === 1) {
 				embed.setAuthor({ name: `${interaction.client.user.username} | Loop`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
 				embed.setColor(config.app.color);
@@ -36,14 +36,12 @@ module.exports = {
 
 			const success = queue.setRepeatMode(queue.repeatMode === 0 ? QueueRepeatMode.QUEUE : QueueRepeatMode.OFF);
 
-			if (queue.repeatMode === 1) {
-				embed.setAuthor({ name: `${interaction.client.user.username} | Loop`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
-				embed.setColor(config.app.color);
-				embed.setDescription(success ? language.REPEAT_MODE + ` **${queue.repeatMode === 0 ? 'disabled' : 'enabled'}** ` + language.QUEUE_REPEATED + ` 🔁` : language.SOMETHING_WRONG + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
-				embed.setTimestamp();
-				embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
-				return interaction.reply({ embeds: [embed] });
-			}
+			embed.setAuthor({ name: `${interaction.client.user.username} | Loop`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+			embed.setColor(config.app.color);
+			embed.setDescription(success ? language.REPEAT_MODE + ` **${queue.repeatMode === 0 ? 'disabled' : 'enabled'}** ` + language.QUEUE_REPEATED + ` 🔁` : language.SOMETHING_WRONG + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
+			embed.setTimestamp();
+			embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
+			return interaction.reply({ embeds: [embed] });
 
 		} else if (queue.repeatMode === 2) {
 			embed.setAuthor({ name: `${interaction.client.user.username} | Loop`, iconURL: `${interaction.client.user.displayAvatarURL()}` });

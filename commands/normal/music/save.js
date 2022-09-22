@@ -4,7 +4,7 @@ module.exports = {
 	name: 'save',
 	aliases: ['sv'],
 	utilisation: '{prefix}save',
-	permission: "SEND_MESSAGES",
+	permissions: ["VIEW_CHANNEL", "SEND_MESSAGES"],
 	voiceChannel: true,
 
 	async execute(client, message) {
