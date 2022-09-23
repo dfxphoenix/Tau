@@ -60,10 +60,6 @@ app.get('/api', function(req, res) {
 	});
 });
 
-app.get('/callback', function(req, res) {
-	res.redirect(301, '/');
-});
-
 app.get('*', function(req, res) {
 	const name = client.user.username;
 	const avatar = client.user.displayAvatarURL();
