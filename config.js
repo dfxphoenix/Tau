@@ -4,13 +4,17 @@ module.exports = {
 		slashCommands: true,
 		token: 'Token',
 		id: 'ID',
+		privateMode: false,
 		playing: 'music',
-		port: 80,
-		ip: '127.0.0.1',
 		slogan: 'Best Discord music bot',
 		owner: 'Owner name',
 		color: '#faa61a',
-		language: 'en_US'
+		language: 'en_US',
+		website: {
+			enabled: true,
+			port: 80,
+			ip: '127.0.0.1'
+		}
 	},
 
 	rolesGroup: {
