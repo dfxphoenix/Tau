@@ -57,7 +57,7 @@ if (config.app.website.enabled) {
 			const channels = client.channels.cache.size;
 
 			res.send({
-				'guilds': guilds,
+			'guilds': guilds,
 			'users': users,
 			'channels': channels
 			});
