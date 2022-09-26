@@ -25,7 +25,7 @@ module.exports = (client, message) => {
 				var rolearray = [];
 
 				for (var y = 0; y < roles[role].roleName.length; y++) {
-					if (roles[role].roleName[y].id) {
+					if (roles[role].roleName[y]) {
 						rolearray.push(message.guild.roles.cache.find(x => x.name === roles[role].roleName[y]).id);
 					} else {
 						return message.reply({ content: language.ROLE + ` ${roles[role].roleName.join(', ')} ` + language.NOT_EXIST + `.`, ephemeral: true});
