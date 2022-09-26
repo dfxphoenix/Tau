@@ -15,7 +15,7 @@ module.exports = (client, interaction) => {
 
 			for (role in roles) {
 
-				if (command && roles[role].enabled && roles[role].commands.includes(command.name) && !message.member.permissions.has("ADMINISTRATOR")) {
+				if (command && roles[role].enabled && roles[role].commands.includes(command.name) && !interaction.member.permissions.has("ADMINISTRATOR")) {
 
 					var rolearray = [];
 

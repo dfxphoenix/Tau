@@ -33,7 +33,7 @@ module.exports = (client, message) => {
 				}
 
 				if (!message.member._roles.some(v => rolearray.includes(v))) {
-					embed.setAuthor({ name: `${client.user.username} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
+					embed.setAuthor({ name: `${client.user.username} | Role`, iconURL: `${client.user.displayAvatarURL()}` });
 					embed.setColor(config.app.color);
 					embed.setDescription(language.THIS_COMMAND + ` ${roles[role].roleName.join(', ')} ` + language.ROLE_ON_SERVER + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
 					embed.setTimestamp();
@@ -45,7 +45,7 @@ module.exports = (client, message) => {
 
 		if (cmd && cmd.voiceChannel) {
 			if (!message.member.voice.channel) {
-				embed.setAuthor({ name: `${client.user.username} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
+				embed.setAuthor({ name: `${client.user.username} | Voice`, iconURL: `${client.user.displayAvatarURL()}` });
 				embed.setColor(config.app.color);
 				embed.setDescription(language.NOT_IN_CHANNEL + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
 				embed.setTimestamp();
@@ -54,7 +54,7 @@ module.exports = (client, message) => {
 			}
 
 			if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
-				embed.setAuthor({ name: `${client.user.username} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
+				embed.setAuthor({ name: `${client.user.username} | Voice`, iconURL: `${client.user.displayAvatarURL()}` });
 				embed.setColor(config.app.color);
 				embed.setDescription(language.YOU_ARE_NOT + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
 				embed.setTimestamp();
