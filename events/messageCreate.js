@@ -14,7 +14,7 @@ module.exports = (client, message) => {
 
 		const cmd = client.commands.get(command) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command));
 
-		if (cmd.permissions && !functions.Permission(message, cmd.permissions, cmd.name)) return;
+		if (cmd && cmd.permissions && !functions.Permission(message, cmd.permissions, cmd.name)) return;
 
 		const roles = config.rolesGroup;
 
@@ -32,15 +32,13 @@ module.exports = (client, message) => {
 					}
 				}
 
-				for (var y = 0; y < roles[role].roleName.length; y++) {
-					if (!rolearray.includes(message.member._roles[y])) {
-						embed.setAuthor({ name: `${client.user.username} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
-						embed.setColor(config.app.color);
-						embed.setDescription(language.THIS_COMMAND + ` ${roles[role].roleName.join(', ')} ` + language.ROLE_ON_SERVER + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
-						return message.channel.send({ embeds: [embed] });
-					} else {
-						break;
-					}
+				if (!message.member._roles.some(v => rolearray.includes(v))) {
+					embed.setAuthor({ name: `${client.user.username} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
+					embed.setColor(config.app.color);
+					embed.setDescription(language.THIS_COMMAND + ` ${roles[role].roleName.join(', ')} ` + language.ROLE_ON_SERVER + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
+					embed.setTimestamp();
+					embed.setFooter({ text: language.USED_BY + ` ${message.user.username}`, iconURL: `${message.user.displayAvatarURL()}` });
+					return message.channel.send({ embeds: [embed] });
 				}
 			}
 		}
@@ -50,6 +48,8 @@ module.exports = (client, message) => {
 				embed.setAuthor({ name: `${client.user.username} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
 				embed.setColor(config.app.color);
 				embed.setDescription(language.NOT_IN_CHANNEL + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
+				embed.setTimestamp();
+				embed.setFooter({ text: language.USED_BY + ` ${message.user.username}`, iconURL: `${message.user.displayAvatarURL()}` });
 				return message.channel.send({ embeds: [embed] });
 			}
 
@@ -57,6 +57,8 @@ module.exports = (client, message) => {
 				embed.setAuthor({ name: `${client.user.username} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
 				embed.setColor(config.app.color);
 				embed.setDescription(language.YOU_ARE_NOT + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
+				embed.setTimestamp();
+				embed.setFooter({ text: language.USED_BY + ` ${message.user.username}`, iconURL: `${message.user.displayAvatarURL()}` });
 				return message.channel.send({ embeds: [embed] });
 			}
 		}
