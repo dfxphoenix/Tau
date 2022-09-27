@@ -9,7 +9,7 @@ module.exports = (client, interaction) => {
 
 			const command = client.commands.find(cmd => cmd.name.toLowerCase() == interaction.commandName);
 
-			if (command && command.permissions && !functions.Permission(interaction, command.permissions, command.name)) return interaction.reply({ content: language.I_HAVE_NOT_PERMISSION + "!", ephemeral: true });
+			if (command && command.permissions && !functions.Permission(interaction, command.permissions, command.name)) return interaction.reply({ content: language.I_DO_NOT_HAVE_PERMISSION + "!", ephemeral: true });
 
 			const roles = config.rolesGroup;
 
