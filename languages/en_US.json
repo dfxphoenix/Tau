@@ -83,6 +83,7 @@
 	"ROLE": "Role(s)",
 	"NOT_EXIST": "not exist on server",
 	"THERE_WAS_AN_ERROR": "There was an error while executing this command",
+	"ONLY_GUILD": "Commands are only available on guilds",
 	"NOT_FOUND": "Page Not Found.",
 	"FEATURES": "Features",
 	"INVITE": "Invite Me",

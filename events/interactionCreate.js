@@ -5,6 +5,10 @@ module.exports = (client, interaction) => {
 
 		if (interaction.isCommand()) {
 
+			if (!interaction.guild) {
+				return interaction.reply(language.ONLY_GUILD + "!");
+			}
+
 			const embed = new MessageEmbed();
 
 			const command = client.commands.find(cmd => cmd.name.toLowerCase() == interaction.commandName);
