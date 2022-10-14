@@ -15,7 +15,7 @@ player.on('connectionError', (queue, error) => {
 });
 
 player.on('trackStart', (queue, track) => {
-	if (!queue.metadata.permissionsFor(queue.metadata.client.user).has(["ViewChannel", "SendMessages"])) return console.log("Error: No ViewChannel or SendMessages permission detected on server " + queue.metadata.guild.name + " while player event");
+	if (!queue.metadata.permissionsFor(queue.metadata.client.user).has(["VIEW_CHANNEL", "SEND_MESSAGES"])) return console.log("Error: No VIEW_CHANNEL or SEND_MESSAGES permission detected on server " + queue.metadata.guild.name + " while player event");
 	if (!config.opt.loopMessage && queue.repeatMode !== 0) return;
 	embed.setColor(config.app.color);
 	embed.setDescription(language.STARTING_PLAYING + ` ${track.title} ` + language.IN + ` **${queue.connection.channel.name}** 🎧`);
@@ -23,21 +23,21 @@ player.on('trackStart', (queue, track) => {
 });
 
 player.on('trackAdd', (queue, track) => {
-	if (!queue.metadata.permissionsFor(queue.metadata.client.user).has(["ViewChannel", "SendMessages"])) return console.log("Error: No ViewChannel or SendMessages permission detected on server " + queue.metadata.guild.name + " while player event");
+	if (!queue.metadata.permissionsFor(queue.metadata.client.user).has(["VIEW_CHANNEL", "SEND_MESSAGES"])) return console.log("Error: No VIEW_CHANNEL or SEND_MESSAGES permission detected on server " + queue.metadata.guild.name + " while player event");
 	embed.setColor(config.app.color);
 	embed.setDescription(language.THE_TRACK + ` ${track.title} ` + language.ADDED_IN_QUEUE + ` ✅`);
 	queue.metadata.send({ embeds: [embed] });
 });
 
 player.on('botDisconnect', (queue) => {
-	if (!queue.metadata.permissionsFor(queue.metadata.client.user).has(["ViewChannel", "SendMessages"])) return console.log("Error: No ViewChannel or SendMessages permission detected on server " + queue.metadata.guild.name + " while player event");
+	if (!queue.metadata.permissionsFor(queue.metadata.client.user).has(["VIEW_CHANNEL", "SEND_MESSAGES"])) return console.log("Error: No VIEW_CHANNEL or SEND_MESSAGES permission detected on server " + queue.metadata.guild.name + " while player event");
 	embed.setColor(config.app.color);
 	embed.setDescription(language.MANUALLY_DISCONNECTED + '... ❌');
 	queue.metadata.send({ embeds: [embed] });
 });
 
 player.on('channelEmpty', (queue) => {
-	if (!queue.metadata.permissionsFor(queue.metadata.client.user).has(["ViewChannel", "SendMessages"])) return console.log("Error: No ViewChannel or SendMessages permission detected on server " + queue.metadata.guild.name + " while player event");
+	if (!queue.metadata.permissionsFor(queue.metadata.client.user).has(["VIEW_CHANNEL", "SEND_MESSAGES"])) return console.log("Error: No VIEW_CHANNEL or SEND_MESSAGES permission detected on server " + queue.metadata.guild.name + " while player event");
 	if (config.opt.playerOptions.leaveOnEmpty && config.opt.playerOptions.leaveOnEmpty !== "") {
 		embed.setColor(config.app.color);
 		embed.setDescription(language.NOBODY_IS_ON_CHANNEL + '... ❌');
@@ -46,7 +46,7 @@ player.on('channelEmpty', (queue) => {
 });
 
 player.on('queueEnd', (queue) => {
-	if (!queue.metadata.permissionsFor(queue.metadata.client.user).has(["ViewChannel", "SendMessages"])) return console.log("Error: No ViewChannel or SendMessages permission detected on server " + queue.metadata.guild.name + " while player event");
+	if (!queue.metadata.permissionsFor(queue.metadata.client.user).has(["VIEW_CHANNEL", "SEND_MESSAGES"])) return console.log("Error: No VIEW_CHANNEL or SEND_MESSAGES permission detected on server " + queue.metadata.guild.name + " while player event");
 	if (config.opt.playerOptions.leaveOnEnd && config.opt.playerOptions.leaveOnEnd !== "") {
 		embed.setColor(config.app.color);
 		embed.setDescription(language.FINISHED_READING + ' ✅');
