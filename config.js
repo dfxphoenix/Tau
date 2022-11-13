@@ -42,7 +42,7 @@ module.exports = {
 		discordPlayer: {
 			ytdlOptions: {
 				quality: 'highestaudio',
-				highWaterMark: 1 << 25
+				highWaterMark: 1 << 30
 			}
 		}
 	}

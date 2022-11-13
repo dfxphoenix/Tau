@@ -37,7 +37,7 @@ module.exports = (client, interaction) => {
 						embed.setDescription(language.THIS_COMMAND + ` ${roles[role].roleName.join(', ')} ` + language.ROLE_ON_SERVER + ` ${interaction.author}... ` + language.TRY_AGAIN + ` ❌`);
 						embed.setTimestamp();
 						embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
-						return interaction.channel.send({ embeds: [embed] });
+						return interaction.reply({ embeds: [embed] });
 					}
 				}
 			}
