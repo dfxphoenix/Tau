@@ -9,12 +9,12 @@
 		"start": "node main.js"
 	},
 	"dependencies": {
-		"@discord-player/extractor": "^3.0.2",
+		"@discord-player/extractor": "^3.0.3",
 		"@discordjs/opus": "^0.8.0",
 		"@discordjs/rest": "^1.0.1",
 		"discord-api-types": "^0.31.1",
 		"discord-player": "github:dfxphoenix/discord-player",
-		"discord.js": "github:aiko-chan-ai/discord.js#v13",
+		"discord.js": "^13.13.1",
 		"ejs": "^3.1.8",
 		"express": "^4.17.3",
 		"ffmpeg-static": "^5.0.2",

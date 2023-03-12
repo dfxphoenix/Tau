@@ -52,7 +52,7 @@ module.exports = (client, interaction) => {
 					return interaction.reply({ embeds: [embed] });
 				}
 
-				if (interaction.guild.me.voice.channel && interaction.member.voice.channelId !== interaction.guild.me.voice.channelId) {
+				if (interaction.guild.members.me.voice.channel && interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
 					embed.setAuthor({ name: `${interaction.client.user.username} | Voice`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
 					embed.setColor(config.app.color);
 					embed.setDescription(language.YOU_ARE_NOT + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
