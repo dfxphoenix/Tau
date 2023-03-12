@@ -2,7 +2,7 @@
 
 # Tau
 [![](https://img.shields.io/website?down_color=red&down_message=offline&up_color=green&up_message=online&url=https%3A%2F%2Ftau.dfxphoenix.xyz)](https://tau.dfxphoenix.xyz)
-[![](https://img.shields.io/badge/discord.js-v13.10.2-blue.svg?logo=npm)](https://github.com/discordjs)
+[![](https://img.shields.io/badge/discord.js-v13.13.1-blue.svg?logo=npm)](https://github.com/discordjs)
 [![](https://img.shields.io/badge/paypal-donate-blue.svg)](https://paypal.me/dfxphoenix)
 [![](https://www.codefactor.io/repository/github/dfxphoenix/Tau/badge)](https://www.codefactor.io/repository/github/dfxphoenix/Tau)
 
