@@ -1,4 +1,4 @@
- const { MessageEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = (client, message) => {
 	if (!config.app.slashCommands && config.app.slashCommands !== '') {
