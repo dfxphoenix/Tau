@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js');
-const { QueryType } = require('discord-player');
+const { QueryType } = require('@bleah/discord-player');
 
 module.exports = {
 	name: 'search',

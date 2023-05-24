@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js');
-const { QueueRepeatMode } = require('discord-player');
+const { QueueRepeatMode } = require('@bleah/discord-player');
 
 module.exports = {
 	name: 'loop',

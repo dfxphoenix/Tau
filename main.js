@@ -1,5 +1,5 @@
 const { Client, Intents } = require('discord.js');
-const { Player } = require('discord-player');
+const { Player } = require('@bleah/discord-player');
 const express = require('express');
 const app = express();
 
