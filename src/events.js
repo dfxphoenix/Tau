@@ -15,29 +15,29 @@ player.on('connectionError', (queue, error) => {
 });
 
 player.on('trackStart', (queue, track) => {
-	if (!queue.metadata.permissionsFor(queue.metadata.client.user).has(["VIEW_CHANNEL", "SEND_MESSAGES"])) return console.log("Error: No VIEW_CHANNEL or SEND_MESSAGES permission detected on server " + queue.metadata.guild.name + " while player event");
+	if (!functions.Permission(queue.metadata, ["VIEW_CHANNEL", "SEND_MESSAGES"], "player event")) return;
 	if (!config.opt.loopMessage && queue.repeatMode !== 0) return;
 	embed.setColor(config.app.color);
-	embed.setDescription(language.STARTING_PLAYING + ` ${track.title} ` + language.IN + ` **${queue.connection.channel.name}** 🎧`);
+	embed.setDescription(language.STARTING_PLAYING + ` ${config.app.name} ` + language.IN + ` **${queue.connection.channel.name}** 🎧`);
 	queue.metadata.send({ embeds: [embed] });
 });
 
 player.on('trackAdd', (queue, track) => {
-	if (!queue.metadata.permissionsFor(queue.metadata.client.user).has(["VIEW_CHANNEL", "SEND_MESSAGES"])) return console.log("Error: No VIEW_CHANNEL or SEND_MESSAGES permission detected on server " + queue.metadata.guild.name + " while player event");
+	if (!functions.Permission(queue.metadata, ["VIEW_CHANNEL", "SEND_MESSAGES"], "player event")) return;
 	embed.setColor(config.app.color);
-	embed.setDescription(language.THE_TRACK + ` ${track.title} ` + language.ADDED_IN_QUEUE + ` ✅`);
+	embed.setDescription(language.THE_TRACK + ` ${config.app.name} ` + language.ADDED_IN_QUEUE + ` ✅`);
 	queue.metadata.send({ embeds: [embed] });
 });
 
 player.on('botDisconnect', (queue) => {
-	if (!queue.metadata.permissionsFor(queue.metadata.client.user).has(["VIEW_CHANNEL", "SEND_MESSAGES"])) return console.log("Error: No VIEW_CHANNEL or SEND_MESSAGES permission detected on server " + queue.metadata.guild.name + " while player event");
+	if (!functions.Permission(queue.metadata, ["VIEW_CHANNEL", "SEND_MESSAGES"], "player event")) return;
 	embed.setColor(config.app.color);
 	embed.setDescription(language.MANUALLY_DISCONNECTED + '... ❌');
 	queue.metadata.send({ embeds: [embed] });
 });
 
 player.on('channelEmpty', (queue) => {
-	if (!queue.metadata.permissionsFor(queue.metadata.client.user).has(["VIEW_CHANNEL", "SEND_MESSAGES"])) return console.log("Error: No VIEW_CHANNEL or SEND_MESSAGES permission detected on server " + queue.metadata.guild.name + " while player event");
+	if (!functions.Permission(queue.metadata, ["VIEW_CHANNEL", "SEND_MESSAGES"], "player event")) return;
 	if (config.opt.playerOptions.leaveOnEmpty && config.opt.playerOptions.leaveOnEmpty !== "") {
 		embed.setColor(config.app.color);
 		embed.setDescription(language.NOBODY_IS_ON_CHANNEL + '... ❌');
@@ -46,7 +46,7 @@ player.on('channelEmpty', (queue) => {
 });
 
 player.on('queueEnd', (queue) => {
-	if (!queue.metadata.permissionsFor(queue.metadata.client.user).has(["VIEW_CHANNEL", "SEND_MESSAGES"])) return console.log("Error: No VIEW_CHANNEL or SEND_MESSAGES permission detected on server " + queue.metadata.guild.name + " while player event");
+	if (!functions.Permission(queue.metadata, ["VIEW_CHANNEL", "SEND_MESSAGES"], "player event")) return;
 	if (config.opt.playerOptions.leaveOnEnd && config.opt.playerOptions.leaveOnEnd !== "") {
 		embed.setColor(config.app.color);
 		embed.setDescription(language.FINISHED_READING + ' ✅');
