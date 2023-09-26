@@ -9,7 +9,7 @@
 		"start": "node main.js"
 	},
 	"dependencies": {
-		"@bleah/discord-player": "^5.2.4",
+		"@bleah/discord-player": "^5.5.2",
 		"@discord-player/extractor": "^3.0.3",
 		"@discordjs/opus": "^0.8.0",
 		"@discordjs/rest": "^1.0.1",
