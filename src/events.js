@@ -18,14 +18,14 @@ player.on('trackStart', (queue, track) => {
 	if (!functions.Permission(queue.metadata, ["VIEW_CHANNEL", "SEND_MESSAGES"], "player event")) return;
 	if (!config.opt.loopMessage && queue.repeatMode !== 0) return;
 	embed.setColor(config.app.color);
-	embed.setDescription(language.STARTING_PLAYING + ` ${config.app.name} ` + language.IN + ` **${queue.connection.channel.name}** 🎧`);
+	embed.setDescription(language.STARTING_PLAYING + ` ${track.title} ` + language.IN + ` **${queue.connection.channel.name}** 🎧`);
 	queue.metadata.send({ embeds: [embed] });
 });
 
 player.on('trackAdd', (queue, track) => {
 	if (!functions.Permission(queue.metadata, ["VIEW_CHANNEL", "SEND_MESSAGES"], "player event")) return;
 	embed.setColor(config.app.color);
-	embed.setDescription(language.THE_TRACK + ` ${config.app.name} ` + language.ADDED_IN_QUEUE + ` ✅`);
+	embed.setDescription(language.THE_TRACK + ` ${track.title} ` + language.ADDED_IN_QUEUE + ` ✅`);
 	queue.metadata.send({ embeds: [embed] });
 });
 
