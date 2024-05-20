@@ -12,11 +12,11 @@ module.exports = {
 		const embed = new MessageEmbed();
 
 		if (!args[0]) {
-			embed.setAuthor({ name: `${client.user.username} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
+			embed.setAuthor({ name: `${client.user.displayName} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
 			embed.setColor(config.app.color);
 			embed.setDescription(language.VALID_SEARCH + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
 			embed.setTimestamp();
-			embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
+			embed.setFooter({ text: language.USED_BY + ` ${message.author.displayName}`, iconURL: `${message.author.displayAvatarURL()}` });
 			return message.channel.send({ embeds: [embed] });
 		}
 
@@ -26,11 +26,11 @@ module.exports = {
 		});
 
 		if (!res || !res.tracks.length) {
-			embed.setAuthor({ name: `${client.user.username} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
+			embed.setAuthor({ name: `${client.user.displayName} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
 			embed.setColor(config.app.color);
 			embed.setDescription(language.NO_RESULTS_FOUND + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
 			embed.setTimestamp();
-			embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
+			embed.setFooter({ text: language.USED_BY + ` ${message.author.displayName}`, iconURL: `${message.author.displayAvatarURL()}` });
 			return message.channel.send({ embeds: [embed] });
 		}
 
@@ -43,22 +43,22 @@ module.exports = {
 			spotifyBridge: config.opt.playerOptions.spotifyBridge
 		});
 
-		embed.setAuthor({ name: `${client.user.username} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
+		embed.setAuthor({ name: `${client.user.displayName} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
 		embed.setColor(config.app.color);
 		embed.setDescription(language.LOADING + ` ${res.playlist ? language.PLAYLIST : language.TRACK}... 🎧`);
 		embed.setTimestamp();
-		embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
+		embed.setFooter({ text: language.USED_BY + ` ${message.author.displayName}`, iconURL: `${message.author.displayAvatarURL()}` });
 		message.channel.send({ embeds: [embed] });
 
 		try {
 			if (!queue.connection) await queue.connect(message.member.voice.channel);
 		} catch {
 			await player.deleteQueue(message.guild.id);
-			embed.setAuthor({ name: `${client.user.username} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
+			embed.setAuthor({ name: `${client.user.displayName} | Play`, iconURL: `${client.user.displayAvatarURL()}` });
 			embed.setColor(config.app.color);
 			embed.setDescription(language.JOIN_VOICE + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
 			embed.setTimestamp();
-			embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
+			embed.setFooter({ text: language.USED_BY + ` ${message.author.displayName}`, iconURL: `${message.author.displayAvatarURL()}` });
 			return message.channel.send({ embeds: [embed] });
 		}
 

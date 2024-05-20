@@ -11,11 +11,11 @@ module.exports = {
 		const embed = new MessageEmbed();
 
 		if (!queue || !queue.playing) {
-			embed.setAuthor({ name: `${interaction.client.user.username} | Nowplaying`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+			embed.setAuthor({ name: `${interaction.client.user.displayName} | Nowplaying`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
 			embed.setColor(config.app.color);
-			embed.setDescription(language.NO_MUSIC + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
+			embed.setDescription(language.NO_MUSIC + ` ${interaction.user.displayName}... ` + language.TRY_AGAIN + ` ❌`);
 			embed.setTimestamp();
-			embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
+			embed.setFooter({ text: language.USED_BY + ` ${interaction.user.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}` });
 			return interaction.reply({ embeds: [embed] });
 		} 
 
@@ -23,7 +23,7 @@ module.exports = {
 
 		embed.setColor(config.app.color);
 		embed.setThumbnail(track.thumbnail);
-		embed.setAuthor({ name: `${interaction.client.user.username} | Nowplaying`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+		embed.setAuthor({ name: `${interaction.client.user.displayName} | Nowplaying`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
 
 		const methods = ['disabled', 'track', 'queue'];
 
@@ -33,7 +33,7 @@ module.exports = {
 		embed.setDescription(language.NAME + ` **[${track.title}](${track.url})**\n` + language.VOLUME + ` **${queue.volume}**%\n` + language.DURATION + ` **${trackDuration}**\n` + language.LOOP_MODE + ` **${methods[queue.repeatMode]}**\n` + language.REQUESTED_BY + ` ${track.requestedBy}`);
 
 		embed.setTimestamp();
-		embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
+		embed.setFooter({ text: language.USED_BY + ` ${interaction.user.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}` });
 
 		const saveButton = new MessageButton();
 

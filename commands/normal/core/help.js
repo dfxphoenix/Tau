@@ -12,12 +12,12 @@ module.exports = {
 
 		const commands = client.commands.filter(x => x.showHelp !== false);
 
-		embed.setAuthor({ name: `${client.user.username} | Help`, iconURL: `${client.user.displayAvatarURL()}` });
+		embed.setAuthor({ name: `${client.user.displayName} | Help`, iconURL: `${client.user.displayAvatarURL()}` });
 		embed.setColor(config.app.color);
 		embed.setDescription(language.LIST);
 		embed.addFields({ name: language.COMMANDS + ` - ${commands.size}`, value: commands.map(x => `\`${x.name}${x.aliases[0] ? ` (${x.aliases.map(y => y).join(', ')})\`` : '`'}`).join(' | ') });
 		embed.setTimestamp();
-		embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
+		embed.setFooter({ text: language.USED_BY + ` ${message.author.displayName}`, iconURL: `${message.author.displayAvatarURL()}` });
 
 		message.channel.send({ embeds: [embed] });
 	},

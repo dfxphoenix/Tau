@@ -12,11 +12,11 @@ module.exports = {
 		const embed = new MessageEmbed();
 
 		if (!queue || !queue.playing) {
-			embed.setAuthor({ name: `${client.user.username} | Nowplaying`, iconURL: `${client.user.displayAvatarURL()}` });
+			embed.setAuthor({ name: `${client.user.displayName} | Nowplaying`, iconURL: `${client.user.displayAvatarURL()}` });
 			embed.setColor(config.app.color);
 			embed.setDescription(language.NO_MUSIC + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
 			embed.setTimestamp();
-			embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
+			embed.setFooter({ text: language.USED_BY + ` ${message.author.displayName}`, iconURL: `${message.author.displayAvatarURL()}` });
 			return message.channel.send({ embeds: [embed] });
 		} 
 
@@ -24,7 +24,7 @@ module.exports = {
 
 		embed.setColor(config.app.color);
 		embed.setThumbnail(track.thumbnail);
-		embed.setAuthor({ name: `${client.user.username} | Nowplaying`, iconURL: `${client.user.displayAvatarURL()}` });
+		embed.setAuthor({ name: `${client.user.displayName} | Nowplaying`, iconURL: `${client.user.displayAvatarURL()}` });
 
 		const methods = ['disabled', 'track', 'queue'];
 
@@ -34,7 +34,7 @@ module.exports = {
 		embed.setDescription(language.NAME + ` **[${track.title}](${track.url})**\n` + language.VOLUME + ` **${queue.volume}**%\n` + language.DURATION + ` **${trackDuration}**\n` + language.LOOP_MODE + ` **${methods[queue.repeatMode]}**\n` + language.REQUESTED_BY + ` ${track.requestedBy}`);
 
 		embed.setTimestamp();
-		embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
+		embed.setFooter({ text: language.USED_BY + ` ${message.author.displayName}`, iconURL: `${message.author.displayAvatarURL()}` });
 
 		const saveButton = new MessageButton();
 
