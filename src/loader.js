@@ -1,11 +1,17 @@
 const { readdirSync } = require('fs');
 const { Collection } = require('discord.js');
-const { REST } = require('@discordjs/rest');
-const { Routes } = require('discord-api-types/v9');
 
-const commands = [];
+languages = readdirSync('./languages/').filter(file => file.endsWith('.json'));
 
-client.commands = new Collection();
+console.log(`Loading languages...`);
+
+for (const file of languages) {
+	const languageName = file.split('.')[0];
+	const languageData = require(`../languages/${file}`);
+	console.log(`-> Loaded language ${file.split('.')[0]}`);
+	languages[languageName] = languageData;
+	delete require.cache[require.resolve(`../languages/${file}`)];
+};
 
 const events = readdirSync('./events/').filter(file => file.endsWith('.js'));
 
@@ -18,6 +24,10 @@ for (const file of events) {
 	delete require.cache[require.resolve(`../events/${file}`)];
 };
 
+commands = [];
+
+client.commands = new Collection();
+
 console.log(`Loading commands...`);
 
 if (config.app.slashCommands && config.app.slashCommands !== "") {
@@ -26,10 +36,12 @@ if (config.app.slashCommands && config.app.slashCommands !== "") {
 
 		for (fileSlash of commandFiles) {
 			const command = require(`../commands/slash/${dirs}/${fileSlash}`);
-			commands.push(command);
-			console.log(`-> Loaded command ${command.name.toLowerCase()}`);
-			client.commands.set(command.name.toLowerCase(), command);
-			delete require.cache[require.resolve(`../commands/slash/${dirs}/${fileSlash}`)];
+			if (command.name && command.description) {
+				commands.push(command);
+				console.log(`-> Loaded command ${command.name.toLowerCase()}`);
+				client.commands.set(command.name.toLowerCase(), command);
+				delete require.cache[require.resolve(`../commands/slash/${dirs}/${fileSlash}`)];
+			} else console.log(`-> Failed Command ${command.name.toLowerCase()}`)
 		};
 	});
 } else {
@@ -42,48 +54,5 @@ if (config.app.slashCommands && config.app.slashCommands !== "") {
 			client.commands.set(command.name.toLowerCase(), command);
 			delete require.cache[require.resolve(`../commands/normal/${dirs}/${fileNormal}`)];
 		};
-	});
-}
-
-if (config.app.slashCommands && config.app.slashCommands !== "") {
-	client.once('ready', () => {
-		const slashCommands = commands.map(fileSlash => ({
-			name: fileSlash.name,
-			description: fileSlash.description,
-			options: fileSlash.options,
-			defaultPermission: true
-		}));
-		const CLIENT_ID = config.app.id;
-		const rest = new REST({version: '9'}).setToken(config.app.token);
-		(async () => {
-			try {
-				await rest.put(
-					Routes.applicationCommands(CLIENT_ID), {
-						body: slashCommands
-					},
-				);
-			} catch (error) {
-				if (error) console.log(error);
-			}
-		})();
-	});
-} else {
-	client.once('ready', () => {
-		const normalCommands = commands.map(fileNormal => ({
-			defaultPermission: false
-		}));
-		const CLIENT_ID = config.app.id;
-		const rest = new REST({version: '9'}).setToken(config.app.token);
-		(async () => {
-			try {
-				await rest.put(
-					Routes.applicationCommands(CLIENT_ID), {
-						body: normalCommands
-					},
-				);
-			} catch (error) {
-				if (error) console.log(error);
-			}
-		})();
 	});
 }

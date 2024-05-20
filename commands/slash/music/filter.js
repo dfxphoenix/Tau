@@ -15,22 +15,22 @@ module.exports = {
 		const embed = new MessageEmbed();
 
 		if (!queue || !queue.playing) {
-			embed.setAuthor({ name: `${interaction.client.user.username} | Filter`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+			embed.setAuthor({ name: `${interaction.client.user.displayName} | Filter`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
 			embed.setColor(config.app.color);
-			embed.setDescription(language.NO_MUSIC + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌`);
+			embed.setDescription(language.NO_MUSIC + ` ${interaction.user.displayName}... ` + language.TRY_AGAIN + ` ❌`);
 			embed.setTimestamp();
-			embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
+			embed.setFooter({ text: language.USED_BY + ` ${interaction.user.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}` });
 			return interaction.reply({ embeds: [embed] });
 		}
 
 		const actualFilter = queue.getFiltersEnabled()[0];
 
 		if (!query) {
-			embed.setAuthor({ name: `${interaction.client.user.username} | Filter`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+			embed.setAuthor({ name: `${interaction.client.user.displayName} | Filter`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
 			embed.setColor(config.app.color);
-			embed.setDescription(language.VALID_FILTER + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌\n` + `${actualFilter ? `${language.FILTER_ACTIVE} **${actualFilter}** (${prefix}filter ${actualFilter} ${language.TO_DISABLE}).\n` : ''}`);
+			embed.setDescription(language.VALID_FILTER + ` ${interaction.user.displayName}... ` + language.TRY_AGAIN + ` ❌\n` + `${actualFilter ? `${language.FILTER_ACTIVE} **${actualFilter}** (${prefix}filter ${actualFilter} ${language.TO_DISABLE}).\n` : ''}`);
 			embed.setTimestamp();
-			embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
+			embed.setFooter({ text: language.USED_BY + ` ${interaction.user.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}` });
 			return interaction.reply({ embeds: [embed] });
 		}
 
@@ -42,11 +42,11 @@ module.exports = {
 		const filter = filters.find((x) => x.toLowerCase() === query.toLowerCase());
 
 		if (!filter) {
-			embed.setAuthor({ name: `${interaction.client.user.username} | Filter`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+			embed.setAuthor({ name: `${interaction.client.user.displayName} | Filter`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
 			embed.setColor(config.app.color);
-			embed.setDescription(language.FILTER_DOESNT_EXIST + ` ${interaction.user.username}... ` + language.TRY_AGAIN + ` ❌\n${actualFilter ? `${language.FILTER_ACTIVE} **${actualFilter}**.\n` : ''}${language.LIST_AVAILABLE_FILTERS} ${filters.map(x => `**${x}**`).join(', ')}.`);
+			embed.setDescription(language.FILTER_DOESNT_EXIST + ` ${interaction.user.displayName}... ` + language.TRY_AGAIN + ` ❌\n${actualFilter ? `${language.FILTER_ACTIVE} **${actualFilter}**.\n` : ''}${language.LIST_AVAILABLE_FILTERS} ${filters.map(x => `**${x}**`).join(', ')}.`);
 			embed.setTimestamp();
-			embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
+			embed.setFooter({ text: language.USED_BY + ` ${interaction.user.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}` });
 			return interaction.reply({ embeds: [embed] });
 		}
 
@@ -56,11 +56,11 @@ module.exports = {
 
 		await queue.setFilters(filtersUpdated);
 
-		embed.setAuthor({ name: `${interaction.client.user.username} | Filter`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
+		embed.setAuthor({ name: `${interaction.client.user.displayName} | Filter`, iconURL: `${interaction.client.user.displayAvatarURL()}` });
 		embed.setColor(config.app.color);
 		embed.setDescription(language.THE_FILTER + ` ${filter} ` + language.IS_NOW + ` **${queue.getFiltersEnabled().includes(filter) ? 'enabled' : 'disabled'}** ✅\n*` + language.REMINDER_THE_LONGER + `*`);
 		embed.setTimestamp();
-		embed.setFooter({ text: language.USED_BY + ` ${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL()}` });
+		embed.setFooter({ text: language.USED_BY + ` ${interaction.user.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}` });
 		interaction.reply({ embeds: [embed] });
 
 	},

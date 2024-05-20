@@ -13,6 +13,12 @@ module.exports = (client, interaction) => {
 
 			const command = client.commands.find(cmd => cmd.name.toLowerCase() == interaction.commandName);
 
+			if (!command) return;
+
+			if (config.app.autoLanguage) {
+				language = languages[functions.getLanguage(config, interaction)];
+			}
+
 			if (command && command.permissions && !functions.Permission(interaction, command.permissions, command.name)) return interaction.reply({ content: language.I_DO_NOT_HAVE_PERMISSION + "!", ephemeral: true });
 
 			const roles = config.rolesGroup;
@@ -73,7 +79,11 @@ module.exports = (client, interaction) => {
 
 	if (interaction.isButton()) {
 
-		const queue = global.player.getQueue(interaction.guildId);
+		const queue = player.getQueue(interaction.guildId);
+
+		if (config.app.autoLanguage) {
+			language = languages[functions.getLanguage(config, interaction)];
+		}
 
 		switch (interaction.customId) {
 			case 'saveTrack': {

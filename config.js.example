@@ -10,6 +10,7 @@ module.exports = {
 		owner: 'Owner name',
 		color: '#faa61a',
 		language: 'en_US',
+		autoLanguage: true,
 		website: {
 			enabled: true,
 			port: 80,
@@ -43,6 +44,11 @@ module.exports = {
 			ytdlOptions: {
 				quality: 'highestaudio',
 				highWaterMark: 1 << 30
+			},
+			ytdlAgent: {
+				type: 'cookie',
+				proxy: { uri: '' },
+				cookies: []
 			}
 		}
 	}

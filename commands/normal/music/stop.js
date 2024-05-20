@@ -12,21 +12,21 @@ module.exports = {
 		const embed = new MessageEmbed();
 
 		if (!queue || !queue.playing) {
-			embed.setAuthor({ name: `${client.user.username} | Stop`, iconURL: `${client.user.displayAvatarURL()}` });
+			embed.setAuthor({ name: `${client.user.displayName} | Stop`, iconURL: `${client.user.displayAvatarURL()}` });
 			embed.setColor(config.app.color);
 			embed.setDescription(language.NO_MUSIC + ` ${message.author}... ` + language.TRY_AGAIN + ` ❌`);
 			embed.setTimestamp();
-			embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
+			embed.setFooter({ text: language.USED_BY + ` ${message.author.displayName}`, iconURL: `${message.author.displayAvatarURL()}` });
 			return message.channel.send({ embeds: [embed] });
 		}
 
 		queue.destroy();
 
-		embed.setAuthor({ name: `${client.user.username} | Stop`, iconURL: `${client.user.displayAvatarURL()}` });
+		embed.setAuthor({ name: `${client.user.displayName} | Stop`, iconURL: `${client.user.displayAvatarURL()}` });
 		embed.setColor(config.app.color);
 		embed.setDescription(language.MUSIC_STOPPED + ` ✅`);
 		embed.setTimestamp();
-		embed.setFooter({ text: language.USED_BY + ` ${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` });
+		embed.setFooter({ text: language.USED_BY + ` ${message.author.displayName}`, iconURL: `${message.author.displayAvatarURL()}` });
 		message.channel.send({ embeds: [embed] });
 	},
 };

@@ -16,6 +16,10 @@ module.exports = (client, message) => {
 
 		if (cmd && cmd.permissions && !functions.Permission(message, cmd.permissions, cmd.name)) return;
 
+		if (config.app.autoLanguage) {
+			language = languages[functions.getLanguage(config, message)];
+		}
+
 		const roles = config.rolesGroup;
 
 		for (role in roles) {
