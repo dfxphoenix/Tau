@@ -1,0 +1,50 @@
+module.exports = {
+	app: {
+		px: '!',
+		slashCommands: true,
+		token: 'Token',
+		id: 'ID',
+		privateMode: false,
+		playing: 'music',
+		slogan: 'Best Discord music bot',
+		owner: 'Owner name',
+		color: '#faa61a',
+		language: 'en_US',
+		autoLanguage: true,
+		website: {
+			enabled: true,
+			port: 80,
+			ip: '127.0.0.1'
+		}
+	},
+
+	rolesGroup: {
+		Normal: {
+			enabled: false,
+			roleName: ['DJ', 'VIP'],
+			commands: ['back', 'clear', 'loop', 'seek', 'shuffle', 'skip', 'stop', 'volume']
+		},
+		Premium: {
+			enabled: false,
+			roleName: ['VIP'],
+			commands: ['filter']
+		},
+	},
+
+	opt: {
+		maxVol: 100,
+		loopMessage: false,
+		playerOptions: {
+			leaveOnEnd: true,
+			leaveOnEmpty: false,
+			autoSelfDeaf: true,
+			spotifyBridge: true
+		},
+		discordPlayer: {
+			ytdlpAgent: {
+				proxyUri: "",
+				cookies: ""
+			}
+		}
+	}
+};
